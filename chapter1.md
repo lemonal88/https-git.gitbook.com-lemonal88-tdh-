@@ -85,7 +85,9 @@ HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.dat
 beeline -u jdbc:hive2://<Inceptor ip>:10000/  
 ```
 
-（弃用没加安全认证的hive1登陆命令为：transwarp -t -h <Inceptor ip>）
+（弃用没加安全认证的hive1登陆命令为：transwarp -t -h <Inceptor ip>
+
+
 >show databases;
 >use database;
 >show tables;
