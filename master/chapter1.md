@@ -66,16 +66,23 @@ load data inpath ‘user/datadir/a.txt’ single_tbl partition(level='A');
 
 
 B、创建范围分区表（用于避免全表扫描，快速检索，导入数据的方法也很少，只能通过从另一个表插入到范围表中，其产生原因是为了规避单值分区每创建一个表就会产生一个小文件，而范围分区则是每个分区存储一个文件）
+
 （1）创建范围分区表rangepart
+```
 create table rangepart(name string)partitioned by range(age int)(
             partition values less than(30),
             partition values less than(40),
             partition values less than(50),
             partition values less than(MAXVALUE)
 );
+```
 （注意分区表为左闭右开区间）
+
 （2）将本地文件put到HDFS的user/datadir的目录中
+```
 hadoop fs -put /tmp/b.txt user/datadir
+```
+
 （3）创建外表，来将HDFS中的文件进行导入进来(外表是用来指定导入数据格式的，且drop外表时，HDFS上的数据还存在)
 create external table userinfo(name string,age int) row format delimited fields terminated by ',' location 'user/datadir';
 （4）将外表的数据插入到建立好的rangepart表中
