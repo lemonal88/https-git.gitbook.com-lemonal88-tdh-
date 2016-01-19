@@ -77,7 +77,8 @@ HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.dat
 
 （4）Inceptor-SQL(SQL on spark)：
 高级参数里面可以设置安全护栏，即hive.server.enable，值为FALSE不开启，值为                        TRUE后面服务就需要安装kerbos认证了，这项看具体实际需求。另外在资源分配选项中，executor有                                   Fixed（同构机器，每台机器配置差不多）和Ratio（异构机器，每台机器配置相差很大）两种，一般选择Fixed，下  
-面的内核和内存千万不能超过YARN所设置的内核数和内存大小的值，因为Inceptor-SQL是从YARN那里申请                    资源的！推荐配置为内核数：内存＝1:2（1个内核配置2GB）
+面的内核和内存千万不能超过YARN所设置的内核数和内存大小的值，因为Inceptor-SQL是从YARN那里申请                    资源的！推荐配置为内核数：内存＝1:2（1个内核配置2GB），
+Inceptor server节点需要安装在非namenode节点上
 
 6、确认安装后，在CLI下输入hive2登陆Inceptor的命令：
 
