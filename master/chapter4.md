@@ -14,15 +14,17 @@ java -jar squirrel-sql-3.6-standard.jar
 
 3、连接数据库需要填写驱动信息，Name：myhive（随意起名）
 URL：jdbc:hive2://<Inceptor server IP>:10000/ (/后面不写数据库名代表默认的default数据库)最后添加外部JDBC的jar包，将inceptor-driver-4.2.2.jar添加进去
+
 ![](11.png)
 ![](12.png)
 
 
-
 4、完成安装
 
+![](13.png)
 
-add添加驱动
+
+
 
 
 
