@@ -116,12 +116,19 @@ create external table bucket_info(id int, name string)row format delimited field
 load data inpath '/user/tdh/data/bucket-data' into table bucket_info;
 ```
 
-2、设置分桶开关
+5、设置分桶开关
+```
 set hive.enforce.bucketing=true;
-3、插入数据
+```
+
+
+5、插入数据
 insert into table bucket_tbl select *from bucket_info;
+
 按照取模后的大小排列：
 insert into table bucket_tab1 select * from bucket_info
+
+
 --建立ORC表（必须要分桶，可以做group by，order by操作）
 （1）create table country（id int，country string）stored as orc
 （2）create external table ex_tbl(id int,country string)
