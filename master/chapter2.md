@@ -22,30 +22,34 @@ GRANT ALL PRIVILEGES ON *.* TO 'tdh'@'%' IDENTIFIED BY '123456' WITH GRANT OPTIO
 GRANT ALL PRIVILEGES ON db1.* TO 'tdh'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;）
 ```
 
---浏览mysql数据库
+（6）浏览mysql数据库
+```
 sqoop list-databases \
 --username tdh \
 --password 123456 \
 --connect jdbc:mysql://172.16.1.15:3306/
+```
 
-
---浏览mysql数据库中的表，db1为mysql中的一个数据库名称
+（7）浏览mysql数据库中的表，db1为mysql中的一个数据库名称
+```
 sqoop list-tables \
 --username tdh \
 --password 123456 \
 --connect jdbc:mysql://172.16.1.15:3306/db1
+```
 
-
---########从mysql————>HDFS上（import，将mysql中的db1数据库里面的表导入到/user/datadir）
+（8）从mysql————>HDFS上（import，将mysql中的db1数据库里面的表导入到/user/datadir）
+```
 sqoop import \
 --username tdh \
 --password 123456 \
 --connect jdbc:mysql://172.16.1.15:3306/db1 \
 --table country \
 --target-dir /user/datadir
+```
 
-
----################从HDFS————>mysql表上（export）
+（9）从HDFS————>mysql表上（export）
+```
 sqoop export \
 --username tdh \
 --password 123456 \
@@ -53,6 +57,8 @@ sqoop export \
 --table cc \
 --export-dir /user/testdir \
 --staging-table tmptable
+```
+
 
 
 注意事项：在执行导入导出数据时，可能由于yuan资源不足或者其他进程的占用，而一直停留在job作业等待处理中，
