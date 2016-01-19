@@ -14,15 +14,14 @@ hadoop fs -mkdir /user/flume
     
 4、进入Flume的默认配置路径修改flume.conf
 ```
->cd /usr/lib/flume/conf
->vi flume.conf
+cd /usr/lib/flume/conf
+vi flume.conf
 ```
     
-
-        
-##flume.conf，将以下代码粘贴进去，保存退出
-
-# Name the components on this agent
+     
+##将以下代码粘贴进去，保存退出
+```
+## Name the components on this agent
 agent1.sources = source1
 agent1.sinks = sink1
 agent1.channels = ch1
@@ -47,11 +46,18 @@ agent1.channels.ch1.type = file
 # Bind the source and sink to the channel
 agent1.sources.source1.channels = ch1
 agent1.sinks.sink1.channel = ch1
+```
 
 
-5、退回到usr/lib/flume，执行以下flume上传命令：
+5、退回到usr/lib/flume目录下，执行以下flume上传命令
+
+```
 bin/flume-ng agent -n agent1 -c conf -f conf/flume.conf -Dflume.root.logger=INFO,consoles
+```
 
 6、查看HDFS目录中/user/flume是否已经有刚刚上传的a.txt文件
+```
 hadoop fs -ls /user/flume
 hadoop fs -cat /user/flume/*
+```
+
