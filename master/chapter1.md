@@ -26,14 +26,17 @@ load data inpath ‘user/datadir/data.txt’ into table s3；
 使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）hive为owner名字，可以通过ESCE table;命令查看表中owner type字段名称）
 
 B、从其他表导入
+
 （1）将t3的表结构复制给t4，注意不复制数据
 ```
 create table t4 like t3；
 ```
 
-
 （2）查看
-select * from t4；
+```
+select * from t4
+```
+；
 （3）将t3表中的数据插入到t4表中
 insert into table t4 select * from t3；
 
