@@ -29,21 +29,29 @@ B、从其他表导入
 
 （1）将t3的表结构复制给t4，注意不复制数据
 ```
-create table t4 like t3；
+create table t4 like t3;
 ```
 
 （2）查看
 ```
-select * from t4
+select * from t4;
 ```
-；
+
 （3）将t3表中的数据插入到t4表中
-insert into table t4 select * from t3；
+```
+insert into table t4 select * from t3;
+```
+
 
 二、创建分区表
+
 A、创建单值分区
+
 (1)创建单值分区表（每创建一个单值分区表就会产生一个小文件，这里只有一个name值）
-create table single_tbl(name string) partitioned by(level string);
+```
+create table single_tbl(name string) partitioned by(level string)；
+```
+
 (注意后面的partition分区键和文本是无关的！文本只导入name！分区键是通过load语句中的level具体标识来指定的)
 (2)把本地包含单列数据的txt文件put到HDFS中的/user/datadir目录中
 hadoop fs -put /tmp/a.txt /user/datadir 
