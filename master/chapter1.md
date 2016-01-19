@@ -4,7 +4,7 @@
 
 Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor中一共可以操作四种类型的表结构：1、普通txt文本表 2、ORC表（Hive ORC格式）3、ORC事务表（可进行增删改查操作）4、Partition分区表（分为单值分区和范围分区）
 
-##一、普通表导入数据
+###一、普通表导入数据
 A、从HDFS导入数据
 
 （1）创建HDFS数据目录，在本地创建一个存放数据的文件夹
@@ -130,6 +130,7 @@ insert into table bucket_tbl select *from bucket_info;
 
 
 --建立ORC表（必须要分桶，可以做group by，order by操作）
+
 （1）create table country（id int，country string）stored as orc
 （2）create external table ex_tbl(id int,country string)
         row format delimited fields terminated by ','
