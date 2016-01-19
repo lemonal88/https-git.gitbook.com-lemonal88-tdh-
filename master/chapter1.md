@@ -2,7 +2,7 @@
 
 ##简介
 
-Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor中一共可以操作四种类型的表结构：1、普通txt文本表 2、ORC表（Hive ORC格式）3、ORC事务表（可进行增删改查操作）4、Partition分区表（分为单值分区和范围分区）
+Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor中一共可以操作四种类型的表结构：1、普通文本表(TXT表) 2、ORC表（Hive ORC格式）3、ORC事务表（可进行增删改查操作）4、Partition分区表（分为单值分区和范围分区）
 
 ###一、普通表导入数据
 A、从HDFS导入数据
