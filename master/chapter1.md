@@ -2,7 +2,7 @@
 
 ##简介
 
-Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor中一共可以操作四种类型的表结构：1、普通文本表(TXT表) 2、ORC表（Hive ORC格式）3、ORC事务表（可进行增删改查操作）4、Partition分区表（分为单值分区和范围分区）
+Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor中一共可以操作四种类型的表结构：1、普通文本表(TXT表) 2、ORC表（Hive ORC格式）3、ORC事务表（可进行增删改查操作）4、Partition分区表（分单值分区和范围分区）
 
 ###一、普通表导入数据
 A、从HDFS导入数据
@@ -43,7 +43,7 @@ insert into table t4 select * from t3;
 ```
 
 
-二、分区表
+###二、分区表
 
 A、创建单值分区
 
@@ -99,7 +99,8 @@ show partitions rangepart;
 ```
 
 
-三、分桶表（必须创建外表，只支持从外表导入数据，在分桶表中经常做聚合和join操作，速度非常快。另外分桶规则主要分为1、int型，按照数值取模，分几个桶就模几2、string型，按照hash表来分桶）
+###三、分桶表
+（必须创建外表，只支持从外表导入数据，在分桶表中经常做聚合和join操作，速度非常快。另外分桶规则主要分为1、int型，按照数值取模，分几个桶就模几2、string型，按照hash表来分桶）
 
 （1）、创建分桶表bucket_tbl
 ```
@@ -131,7 +132,7 @@ insert into table bucket_tbl select *from bucket_info;
 
 
 
-------建立ORC格式表，如下三种方式（必须要分桶，可以做group by，order by操作）
+------建立ORC格式表，如下三种方式
 
 （1）
 ```
@@ -154,14 +155,14 @@ insert into country select * from ex_tbl;
 
 
 --建立ORC事务表（必须要分桶，既可以单值插入，又可以通过外表插入）
+
 （1）
 ```
 create table country(id int, country string) clustered by (id)into 3 buckets stored as orc tblproperties("transactional" = "true");
 ```
 （2）
-create external表
 ```
-
+create external表
 ```
 （3）
 ```
