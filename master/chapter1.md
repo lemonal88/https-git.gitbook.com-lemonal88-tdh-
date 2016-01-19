@@ -84,11 +84,20 @@ hadoop fs -put /tmp/b.txt user/datadir
 ```
 
 （3）创建外表，来将HDFS中的文件进行导入进来(外表是用来指定导入数据格式的，且drop外表时，HDFS上的数据还存在)
+```
 create external table userinfo(name string,age int) row format delimited fields terminated by ',' location 'user/datadir';
+```
+
 （4）将外表的数据插入到建立好的rangepart表中
-insert into table rangepart select * from userinfo；
+```
+insert into table rangepart select * from userinfo;
+```
+
 （5）查看插入分区表里的数据分布
+```
 show partitions rangepart;
+```
+
 
 三、创建分桶表（必须创建外表，只支持从外表导入数据去1，在分桶表中经常做聚合和join操作，速度非常快。另外分桶规则主要分为1、int型，按照数值取模，分几个桶就模几2、string型，按照hash表来分桶）
 1、创建分桶表bucket_tbl
