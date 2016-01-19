@@ -170,19 +170,24 @@ insert into country select * from external表
 
 
 
-
 --------
 Hyperbase表
+
 （1）建立HBase表（用HBase和数据库做一个映射）
+
 （2）建立HBase外表
+```
 create external table hbase_test……stored by ……with……
+```
 stored by指定HBase存储格式，with后面时序化和反序列化的！对应映射关系
+
 （3）sql on HBase(若在Inceptor上对表进行一个操作，会在HBase同步)
+
 key------>id
 info------>name
 info------>sex
 
-注意事项：
+##注意事项：
 1、HDFS不能直接直接load到Inceptor中的ORC事务表中，（只能load到普通表和ORC表中）要想在ORC事务表里插入数据有两种方法：a.建立一张外表，再将HDFS load进外表上，在insert into select * from external table    b.由于ORC事务表支持增删改查，所以可以使用单值插入语句insert into table country values（101，japan）
 2、查看分区表的命令是show partitions [table名] 
 3、使用命令hdfs dfs -ls /user/country
