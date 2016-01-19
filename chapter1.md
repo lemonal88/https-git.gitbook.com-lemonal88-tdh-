@@ -1,4 +1,4 @@
-# 第一章 TDH安装步骤
+# 第一章 Transwarp Manager的安装
 
 
 
@@ -16,7 +16,7 @@ E、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 
 
 
-##Transwarp Manager的安装：
+##安装步骤：
 
 1、进入/mnt/disk1目录
 
