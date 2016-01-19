@@ -6,17 +6,15 @@
 
 a、将linux主机的IP设置成静态IP，如192.168.1.200
 
-b、在/etc/hosts文件添加主机名，需要在最后一行中添加，如192.168.1.200 dhc-1(名字不能以'_'、'.'、)
+b、在/etc/hosts文件添加主机名，需要在最后一行中添加，如192.168.1.200 dhc-1(注意hostname不支持使用'_'、'.')
 
-在/mnt目录中创建disk1目录
+c、使用chkconfig iptables off关闭防火墙
 
-将transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz和CentOS-6.5-x86_64-bin-DVD1.iso拷贝到/mnt/disk1目录中
+d、在/mnt目录中创建disk1目录
 
-c、将系统时间改为当前时间
+e、将系统时间改为当前时间
 
-d、
-    
-   1、将transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz和CentOS-6.5-x86_64-bin-DVD1.iso两个安装包拷贝到/mnt/disk1中,disk1目录需要事先创建好，将系统时间改为当前时间,另外进入/etc。
+f、
    
  ![](1.png)
  
