@@ -185,7 +185,9 @@ stored by指定HBase存储格式，with后面时序化和反序列化的！对�
 （3）sql on HBase(若在Inceptor上对表进行一个操作，会在HBase同步)
 
 key------>id
+
 info------>name
+
 info------>sex
 
 ##注意事项：
@@ -360,4 +362,4 @@ create table country (id int, country string) partitioned by(level string) clust
 insert into country partition (level='A') select * from ex_tbl where id<5;
 --单条插入
 insert into table country partition (level='C') values(101,'isis');
-
+```
