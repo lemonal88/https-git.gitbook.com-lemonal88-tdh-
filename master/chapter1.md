@@ -131,7 +131,7 @@ insert into table bucket_tbl select *from bucket_info;
 
 
 
->建立ORC格式表，如下三种方式（必须要分桶，可以做group by，order by操作）
+------建立ORC格式表，如下三种方式（必须要分桶，可以做group by，order by操作）
 
 （1）
 ```
@@ -154,9 +154,21 @@ insert into country select * from ex_tbl;
 
 
 --建立ORC事务表（必须要分桶，既可以单值插入，又可以通过外表插入）
-（1）create table country(id int, country string) clustered by (id)into 3 buckets stored as orc tblproperties("transactional" = "true");
-（2）create external表
-（3）insert into country select * from external表
+（1）
+```
+create table country(id int, country string) clustered by (id)into 3 buckets stored as orc tblproperties("transactional" = "true");
+```
+（2）
+create external表
+```
+
+```
+（3）
+```
+insert into country select * from external表
+```
+
+
 
 
 --------
