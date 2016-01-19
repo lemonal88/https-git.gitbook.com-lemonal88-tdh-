@@ -24,8 +24,11 @@ URL：jdbc:hive2://<Inceptor server IP>:10000/ (/后面不写数据库名代表�
 
 ##二、Tableau工具
 1、在官网上下载Tableau软件
+
 2、创建ODBC
+
 3、使用远程来添加一个数据源，例如：
+
     Data source Name：tdh
     Description：tdh
     Host：172.16.2.78
