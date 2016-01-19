@@ -3,5 +3,5 @@
 * [简介](README.md)
 * [Transwarp Manager安装](chapter1.md)
 * [Inceptor-SQL](master/chapter1.md)
-* [第三章](master/chapter2.md)
+* [Sqoop](master/chapter2.md)
 
