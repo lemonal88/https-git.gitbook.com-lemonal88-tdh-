@@ -7,7 +7,7 @@ yum install sqoop
 
 （3）将mysql-connector-java-5.1.38tar.gz驱动包先解压
 ```
-tar -vxvf mysql-connector-java-5.1.38tar.gz
+tar -zxvf mysql-connector-java-5.1.38tar.gz
 ```
 （4）cd进刚刚解压后的目录，将里面的mysql-connector-java-5.1.38-bin.jar包copy到/usr/lib/sqoop/lib本地目录下
 
