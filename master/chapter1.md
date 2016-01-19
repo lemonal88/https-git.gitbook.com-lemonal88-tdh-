@@ -107,11 +107,17 @@ create table bucket_tbl(id int, name string)clustered by (id) into 3 buckets;
 ```
 
 2、创建外表bucket_info
+```
 create external table bucket_info(id int, name string)row format delimited fields terminated by ',' location '/user/datadir';
-2、将从本地txt文件put到HDFS中的表（如普通表），再load进外表中
+```
+
+3、将从本地txt文件put到HDFS中的表（如普通表），再load进外表中
+```
 load data inpath '/user/tdh/data/bucket-data' into table bucket_info;
+```
+
 2、设置分桶开关
-set hive.enforce.bucketing=true；
+set hive.enforce.bucketing=true;
 3、插入数据
 insert into table bucket_tbl select *from bucket_info;
 按照取模后的大小排列：
