@@ -27,7 +27,11 @@ load data inpath ‘user/datadir/data.txt’ into table s3；
 
 B、从其他表导入
 （1）将t3的表结构复制给t4，注意不复制数据
+```
 create table t4 like t3；
+```
+
+
 （2）查看
 select * from t4；
 （3）将t3表中的数据插入到t4表中
