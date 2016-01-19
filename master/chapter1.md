@@ -2,7 +2,7 @@
 
 ##简介
 
-Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor中一共可以操作四种类型的表结构：1、普通文本表(TXT表) 2、分区表（分单值分区和范围分区）3、分桶表4、ORC表（Hive ORC格式）5、ORC事务表（必须先分桶，可进行增删改查操作）
+Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor中一共可以操作五种类型的表结构：1、普通文本表(TXT表) 2、分区表（分单值分区和范围分区）3、分桶表4、ORC表（Hive ORC格式）5、ORC事务表（必须先分桶，可进行增删改查操作）
 
 ###一、普通表导入数据
 A、从HDFS导入数据
@@ -154,7 +154,7 @@ insert into country select * from ex_tbl;
 
 
 
---建立ORC事务表（必须要分桶，既可以单值插入，又可以通过外表插入）
+--建立ORC格式事务表（必须要分桶，既可以单值插入，又可以通过外表插入）
 
 （1）
 ```
@@ -169,7 +169,7 @@ create external表
 insert into country select * from external表
 ```
 
-
+（注意：ORC只是一种表的格式类型，建表时指定了transactional" = "true"，则表明这是一个事务表，必须要分桶，若没有指定则只是普通的ORC表，不需要进行分桶操作）
 
 --------
 Hyperbase表
