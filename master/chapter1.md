@@ -188,9 +188,13 @@ info------>name
 info------>sex
 
 ##注意事项：
+
 1、HDFS不能直接直接load到Inceptor中的ORC事务表中，（只能load到普通表和ORC表中）要想在ORC事务表里插入数据有两种方法：a.建立一张外表，再将HDFS load进外表上，在insert into select * from external table    b.由于ORC事务表支持增删改查，所以可以使用单值插入语句insert into table country values（101，japan）
+
 2、查看分区表的命令是show partitions [table名] 
+
 3、使用命令hdfs dfs -ls /user/country
+
 4、默认数据库存放位置
 hdfs：//nameservice/inceptorsql1/user/hive/warehouse/
 在Inceptor创建数据库时一般使用它的default默认数据库，若自己建立数据库请不要指定location，还有自己建立的数据库可能会因为权限不够而造成一些操作失败报错。
@@ -206,18 +210,26 @@ create table ccc2（a int）；
 （3）
 create table ccc3（a int）location ‘user/ccc3’；
 上述语句建立表的位置在user/ccc3
+
 5、外表的作用是load导数据使用的，起到的是媒介作用，而ORC表则是做具体的操作的，外表一般是和ORC表配合使用的
+
 6、分区表中的单值插入数据必须指定level
+
 7、分桶中的桶大小，即一个文件大小一般为200M，处理效率最优，拿总文件大小除以200M就大概预估出分几个桶了
+
 8、从HDFS中向Mysql中导入数据规定必须先在Mysql中创建临时表，先从HDFS的location目录下导入到tmp表中，再从tmp表导入到Mysql真正的表中
-9、Flume需要先使用yum install flume命令安装，Flume的默认存放位置为/user/lib/flume/conf/flume.conf，vi进去后进行相应的修改，有两个位置需要注意，第一个是spoolDir后跟log所在HDFS中的文件夹名！切记，不是跟具体的log文件或者txt文件！（例如：spoolDir=/tmp/flume/），第二个是path后面是Active NameNode的HDFS路径
-（例如：path＝hdfs：//172.16.2.77:8020/user/datadir），在flume.conf配置中默认指定缓冲区积攒到1k就写入HDFS中
-10、养成在Inceptor中使用命令desc formatted <table名>；来查看各个表的底层结构和属性！！！
+
+9、Flume需要先使用yum install flume命令安装，Flume的默认存放位置为/user/lib/flume/conf/flume.conf，vi进去后进行相应的修改，有两个位置需要注意，第一个是spoolDir后跟log所在HDFS中的文件夹名！切记，不是跟具体的log文件或者txt文件！（如：spoolDir=/tmp/flume/），第二个是path后面是Active NameNode的HDFS路径
+（如：path=hdfs：//172.16.2.77:8020/user/datadir），在flume.conf配置中默认指定缓冲区积攒到1k就写入HDFS中
+
+10、养成在Inceptor中使用命令desc formatted <table名>;来查看各个表的底层结构和属性
+
 11、
-    #创建内表，内表加载hdfs上的数据，会将被加载文件中的内容剪切走。
-    #外表没有这个问题，所以在实际的生产环境中，建议使用外表。
+    (1)创建内表，内表加载hdfs上的数据，会将被加载文件中的内容剪切走。
+    (2)外表没有这个问题，所以在实际的生产环境中，建议使用外表。
+
 12、hadoop fs：命令使用面最广，可以操作任何文件系统。
-        hdfs dfs：命令只能操作HDFS文件系统相关。
+    hdfs dfs：命令只能操作HDFS文件系统相关。
 
 ##附录（示例代码）
 ```
