@@ -14,6 +14,8 @@ d、在/mnt目录中创建disk1目录
 
 e、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 
+1、进入/mnt/disk1目录
+
 
    
  ![](1.png)
@@ -28,7 +30,7 @@ e、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
  ```
  ![](2.png)
  
- 3、安装完成后，会自动弹出界面，依次选择Accept→选择网卡→默认端口8180→删除已有系统资源库→create new repository→Use ISO File→选择/mnt/disk1中的CentOS6.5安装包
+ 3、安装完成后，会自动弹出界面，依次选择Accept→选择网卡→默认端口8180→删除已有yum资源库→create new repository→Use ISO File→选择/mnt/disk1中的CentOS6.5安装包
  
  ![](3.png)
  ![](4.png)
@@ -58,5 +60,11 @@ e、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 7、选择需要/etc/hosts来确认网络解析
 
 8、为了负载均衡，将YARN分配到/rack1中，Inceptor－server分配到/rack2中
+
+
+
+
+
+
  
  
