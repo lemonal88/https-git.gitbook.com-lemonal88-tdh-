@@ -101,27 +101,27 @@ show partitions rangepart;
 
 三、创建分桶表（必须创建外表，只支持从外表导入数据去1，在分桶表中经常做聚合和join操作，速度非常快。另外分桶规则主要分为1、int型，按照数值取模，分几个桶就模几2、string型，按照hash表来分桶）
 
-1、创建分桶表bucket_tbl
+（1）、创建分桶表bucket_tbl
 ```
 create table bucket_tbl(id int, name string)clustered by (id) into 3 buckets;
 ```
 
-2、创建外表bucket_info
+（2）、创建外表bucket_info
 ```
 create external table bucket_info(id int, name string)row format delimited fields terminated by ',' location '/user/datadir';
 ```
 
-3、将从本地txt文件put到HDFS中的表（如普通表），再load进外表中
+（3）、将从本地txt文件put到HDFS中的表（如普通表），再load进外表中
 ```
 load data inpath '/user/tdh/data/bucket-data' into table bucket_info;
 ```
 
-4、设置分桶开关
+（4）、设置分桶开关
 ```
 set hive.enforce.bucketing=true;
 ```
 
-5、插入数据（按照取模大小顺序排列）
+（5）、插入数据（按照取模大小顺序排列）
 ```
 insert into table bucket_tbl select *from bucket_info;
 ```
