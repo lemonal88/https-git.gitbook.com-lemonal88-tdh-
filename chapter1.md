@@ -2,7 +2,7 @@
 
 一、Transwarp Manager的安装：
     
-   1、将transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz和CentOS-6.5-x86_64-bin-DVD1.iso两个安装包拷贝到/mnt/disk1中,disk1目录需要事先创建好，还要将系统时间改为当前时间。
+   1、将transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz和CentOS-6.5-x86_64-bin-DVD1.iso两个安装包拷贝到/mnt/disk1中,disk1目录需要事先创建好，另外将系统时间改为当前时间。
  ![](1.png)
  
  
