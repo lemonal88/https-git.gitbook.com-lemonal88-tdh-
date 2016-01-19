@@ -53,8 +53,12 @@ create table single_tbl(name string) partitioned by(level string)；
 ```
 
 (注意后面的partition分区键和文本是无关的！文本只导入name！分区键是通过load语句中的level具体标识来指定的)
+
 (2)把本地包含单列数据的txt文件put到HDFS中的/user/datadir目录中
+```
 hadoop fs -put /tmp/a.txt /user/datadir 
+```
+
 (3)将HDFS中的a.txt文件load到single_tbl单值分区表，即将a这个文档都设置成A标签
 load data inpath ‘user/datadir/a.txt’ single_tbl partition(level='A');
 
