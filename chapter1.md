@@ -65,6 +65,32 @@ e、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 
 （8）、为了负载均衡，将YARN分配到/rack1中，Inceptor－server分配到/rack2中
 
+5、安装组件和服务，按照左侧栏提示分别需要安装Zookeeper、HDFS、YARN、
+Hyperbase、Inceptor－SQL，其他可以暂时不用安装
+
+（1）Zookeeper：将全部节点都添加上（一定要为奇数），其他默认
+HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.datanode.data.dir，其他默认配置
+
+（2）YARN：基础参数中配置yarn.nodemanager.resource.cpu-vcores的CPU核数，配置yarn.nodemanager.resource.memory-mb的内存大小，推荐配置为YARN的核数全给，内存给一半
+
+（3）HyperBase：配置master.memory内存大小，（若内存大小为8G，那么这里就应该是8G-YARN的                                 yarn.nodemanager.resource.memory-mb内存大小），Mastermemory相当于NN，Region server类似于DN，一般Master memory不耗费内存，主要Region server比较耗费内存
+
+（4）Inceptor-SQL(SQL on spark)：
+高级参数里面可以设置安全护栏，即hive.server.enable，值为FALSE不开启，值为                        TRUE后面服务就需要安装kerbos认证了，这项看具体实际需求。另外在资源分配选项中，executor有                                   Fixed（同构机器，每台机器配置差不多）和Ratio（异构机器，每台机器配置相差很大）两种，一般选择Fixed，下  
+面的内核和内存千万不能超过YARN所设置的内核数和内存大小的值，因为Inceptor-SQL是从YARN那里申请                    资源的！推荐配置为内核数：内存＝1:2（1个内核配置2GB）
+
+6、确认安装后，在CLI下输入hive2登陆Inceptor的命令：
+
+```
+beeline -u jdbc:hive2://<Inceptor ip>:10000/  
+```
+
+（弃用没加安全认证的hive1登陆命令为：transwarp -t -h <Inceptor ip>）
+>show databases;
+>use database;
+>show tables;
+>create table country(id int, name string);
+
 
 
 
