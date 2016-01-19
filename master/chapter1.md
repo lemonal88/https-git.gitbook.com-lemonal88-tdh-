@@ -131,11 +131,20 @@ insert into table bucket_tbl select *from bucket_info;
 
 --建立ORC表（必须要分桶，可以做group by，order by操作）
 
-（1）create table country（id int，country string）stored as orc
-（2）create external table ex_tbl(id int,country string)
+（1）
+```
+create table country（id int，country string）stored as orc;
+```
+
+（2）
+```
+create external table ex_tbl(id int,country string)
         row format delimited fields terminated by ','
         stored as textfile
         location '/user/tdh/externaltbl';
+```
+
+
 （3）insert into country select * from ex_tbl
 
 --建立ORC事务表（必须要分桶，既可以单值插入，又可以通过外表插入）
