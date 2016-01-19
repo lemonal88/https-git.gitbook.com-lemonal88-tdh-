@@ -171,24 +171,7 @@ insert into country select * from external表
 
 （注意：ORC只是一种表的格式类型，建表时指定了transactional" = "true"，则表明这是一个事务表，必须要分桶，若没有指定则只是普通的ORC表，不需要进行分桶操作）
 
---------
-Hyperbase表
 
-（1）建立HBase表（用HBase和数据库做一个映射）
-
-（2）建立HBase外表
-```
-create external table hbase_test……stored by ……with……
-```
-stored by指定HBase存储格式，with后面时序化和反序列化的！对应映射关系
-
-（3）sql on HBase(若在Inceptor上对表进行一个操作，会在HBase同步)
-
-key------>id
-
-info------>name
-
-info------>sex
 
 ##注意事项：
 
