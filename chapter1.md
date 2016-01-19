@@ -1,8 +1,23 @@
 # 第一章 TDH安装步骤
 
 一、Transwarp Manager的安装：
+
+安装前准备
+
+a、将linux主机的IP设置成静态IP，如192.168.1.200
+
+b、在/etc/hosts文件添加主机名，需要在最后一行中添加，如192.168.1.200 dhc-1(名字不能以'_'、'.'、)
+
+在/mnt目录中创建disk1目录
+
+将transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz和CentOS-6.5-x86_64-bin-DVD1.iso拷贝到/mnt/disk1目录中
+
+c、将系统时间改为当前时间
+
+d、
     
-   1、将transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz和CentOS-6.5-x86_64-bin-DVD1.iso两个安装包拷贝到/mnt/disk1中,disk1目录需要事先创建好，另外将系统时间改为当前时间。
+   1、将transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz和CentOS-6.5-x86_64-bin-DVD1.iso两个安装包拷贝到/mnt/disk1中,disk1目录需要事先创建好，将系统时间改为当前时间,另外进入/etc。
+   
  ![](1.png)
  
  
@@ -15,12 +30,20 @@
  ```
  ![](2.png)
  
- 3、安装完成后，会自动弹出界面，依次选择Accept→create new repository→use ISO
- 选择CentOS6.5
+ 3、安装完成后，会自动弹出界面，依次选择Accept→选择网卡→默认端口8180→删除已有系统资源库→create new repository→Use ISO File→选择/mnt/disk1中的CentOS6.5安装包
+ 
  ![](3.png)
  ![](4.png)
+ ![](5.png)
+ ![](6.png)
+ ![](7.png)
+ ![](8.png)
+ ![](9.png)
  
- 4、安装好Centos6.5以后，打开chrome浏览器，输入安装Manager的本地节点ip地址加端口号8180，如172.16.2.68：8180，进行如下步骤操作：
+ 
+ 
+ 
+ 4、安装好Centos6.5以后，打开chrome浏览器，输入安装Manager的本地节点ip地址加端口号8180，如192.168.1.200：8180，进行如下步骤操作：
  
 1、输入admin、admin进入界面
 
