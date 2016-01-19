@@ -55,7 +55,7 @@ agent1.sinks.sink1.channel = ch1
 bin/flume-ng agent -n agent1 -c conf -f conf/flume.conf -Dflume.root.logger=INFO,consoles
 ```
 
-6、查看HDFS目录中/user/flume是否已经有刚刚上传的a.txt文件
+6、检查HDFS目录中/user/flume是否已经有刚刚上传的a.txt文件
 ```
 hadoop fs -ls /user/flume
 hadoop fs -cat /user/flume/*
