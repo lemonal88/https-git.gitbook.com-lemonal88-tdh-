@@ -146,7 +146,7 @@ create external table ex_tbl(id int,country string)
 
 （3）
 ```
-insert into country select * from ex_tbl
+insert into country select * from ex_tbl;
 ```
 
 
