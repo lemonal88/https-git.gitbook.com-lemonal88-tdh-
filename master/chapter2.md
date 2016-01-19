@@ -61,7 +61,10 @@ sqoop export \
 
 
 
-注意事项：在执行导入导出数据时，可能由于yuan资源不足或者其他进程的占用，而一直停留在job作业等待处理中，
+##注意事项
+在执行导入导出数据时，可能由于yuan资源不足或者其他进程的占用，而一直停留在job作业等待处理中，
 此时可以通过浏览器进入YARN中Resource Manager节点中的8088端口查看被占用的Application ID号，里面描述为Application master为常驻进程，不用
-杀掉，再在shell中输入命令yuan -application -kill <Application ID号> 来杀死卡掉的进程，再运行上面的import、export语句
+杀掉，再在shell中输入命令
+```yuan -application -kill <Application ID>```
+来杀死卡掉的进程，再运行上面的import、export语句
 
