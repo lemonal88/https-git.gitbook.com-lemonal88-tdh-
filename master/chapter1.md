@@ -1,4 +1,132 @@
-# 第二章 
+# 第二章 Inceptor-SQL使用
+
+##简介
+
+Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor中一共可以操作四种类型的表结构：1、普通txt文本表 2、ORC表（Hive ORC格式）3、ORC事务表（可进行增删改查操作）4、Partition分区表（分为单值分区和范围分区）
+
+##一、普通表导入数据
+A、从HDFS导入数据
+
+（1）创建HDFS数据目录，在本地创建一个存放数据的文件夹
+```
+hadoop fs -mkdir /user/datadir
+```
+
+（2）首先将本地path存放的数据文件put到HDFS目录中
+```
+hadoop fs -put  <path>/data.txt /user/datadir
+```
+
+（3）将上传进HDFS的文件load到Inceptor事先建立好的s3表中
+load data inpath ‘user/datadir/data.txt’ into table s3；
+（注意本步操作可能会报load数据没有权限，HDFS上的数据和表的权限不一致
+使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）hive为owner名字，可以通过ESCE table;命令查看表中owner type字段名称）
+
+B、从其他表导入
+（1）将t3的表结构复制给t4，注意不复制数据
+create table t4 like t3；
+（2）查看
+select * from t4；
+（3）将t3表中的数据插入到t4表中
+insert into table t4 select * from t3；
+
+二、创建分区表
+A、创建单值分区
+(1)创建单值分区表（每创建一个单值分区表就会产生一个小文件，这里只有一个name值）
+create table single_tbl(name string) partitioned by(level string);
+(注意后面的partition分区键和文本是无关的！文本只导入name！分区键是通过load语句中的level具体标识来指定的)
+(2)把本地包含单列数据的txt文件put到HDFS中的/user/datadir目录中
+hadoop fs -put /tmp/a.txt /user/datadir 
+(3)将HDFS中的a.txt文件load到single_tbl单值分区表，即将a这个文档都设置成A标签
+load data inpath ‘user/datadir/a.txt’ single_tbl partition(level='A');
+
+B、创建范围分区表（用于避免全表扫描，快速检索，导入数据的方法也很少，只能通过从另一个表插入到范围表中，其产生原因是为了规避单值分区每创建一个表就会产生一个小文件，而范围分区则是每个分区存储一个文件）
+（1）创建范围分区表rangepart
+create table rangepart(name string)partitioned by range(age int)(
+            partition values less than(30),
+            partition values less than(40),
+            partition values less than(50),
+            partition values less than(MAXVALUE)
+);
+（注意分区表为左闭右开区间）
+（2）将本地文件put到HDFS的user/datadir的目录中
+hadoop fs -put /tmp/b.txt user/datadir
+（3）创建外表，来将HDFS中的文件进行导入进来(外表是用来指定导入数据格式的，且drop外表时，HDFS上的数据还存在)
+create external table userinfo(name string,age int) row format delimited fields terminated by ',' location 'user/datadir';
+（4）将外表的数据插入到建立好的rangepart表中
+insert into table rangepart select * from userinfo；
+（5）查看插入分区表里的数据分布
+show partitions rangepart;
+
+三、创建分桶表（必须创建外表，只支持从外表导入数据去1，在分桶表中经常做聚合和join操作，速度非常快。另外分桶规则主要分为1、int型，按照数值取模，分几个桶就模几2、string型，按照hash表来分桶）
+1、创建分桶表bucket_tbl
+create table bucket_tbl(id int, name string)clustered by (id) into 3 buckets;
+2、创建外表bucket_info
+create external table bucket_info(id int, name string)row format delimited fields terminated by ',' location '/user/datadir';
+2、将从本地txt文件put到HDFS中的表（如普通表），再load进外表中
+load data inpath '/user/tdh/data/bucket-data' into table bucket_info;
+2、设置分桶开关
+set hive.enforce.bucketing=true；
+3、插入数据
+insert into table bucket_tbl select *from bucket_info;
+按照取模后的大小排列：
+insert into table bucket_tab1 select * from bucket_info
+--建立ORC表（必须要分桶，可以做group by，order by操作）
+（1）create table country（id int，country string）stored as orc
+（2）create external table ex_tbl(id int,country string)
+        row format delimited fields terminated by ','
+        stored as textfile
+        location '/user/tdh/externaltbl';
+（3）insert into country select * from ex_tbl
+
+--建立ORC事务表（必须要分桶，既可以单值插入，又可以通过外表插入）
+（1）create table country(id int, country string) clustered by (id)into 3 buckets stored as orc tblproperties("transactional" = "true");
+（2）create external表
+（3）insert into country select * from external表
+
+
+--------
+Hyperbase表
+（1）建立HBase表（用HBase和数据库做一个映射）
+（2）建立HBase外表
+create external table hbase_test……stored by ……with……
+stored by指定HBase存储格式，with后面时序化和反序列化的！对应映射关系
+（3）sql on HBase(若在Inceptor上对表进行一个操作，会在HBase同步)
+key------>id
+info------>name
+info------>sex
+
+注意事项：
+1、HDFS不能直接直接load到Inceptor中的ORC事务表中，（只能load到普通表和ORC表中）要想在ORC事务表里插入数据有两种方法：a.建立一张外表，再将HDFS load进外表上，在insert into select * from external table    b.由于ORC事务表支持增删改查，所以可以使用单值插入语句insert into table country values（101，japan）
+2、查看分区表的命令是show partitions [table名] 
+3、使用命令hdfs dfs -ls /user/country
+4、默认数据库存放位置
+hdfs：//nameservice/inceptorsql1/user/hive/warehouse/
+在Inceptor创建数据库时一般使用它的default默认数据库，若自己建立数据库请不要指定location，还有自己建立的数据库可能会因为权限不够而造成一些操作失败报错。
+eg.（1）
+create database ccc location ‘/user/ccc’；
+create table ccc1；
+上述语句建立的数据库位置为user/ccc/hive/ccc1
+
+（2）
+create table ccc2（a int）；
+表示创建的ccc2表到默认路径user/ccc/hive/ccc2
+
+（3）
+create table ccc3（a int）location ‘user/ccc3’；
+上述语句建立表的位置在user/ccc3
+5、外表的作用是load导数据使用的，起到的是媒介作用，而ORC表则是做具体的操作的，外表一般是和ORC表配合使用的
+6、分区表中的单值插入数据必须指定level
+7、分桶中的桶大小，即一个文件大小一般为200M，处理效率最优，拿总文件大小除以200M就大概预估出分几个桶了
+8、从HDFS中向Mysql中导入数据规定必须先在Mysql中创建临时表，先从HDFS的location目录下导入到tmp表中，再从tmp表导入到Mysql真正的表中
+9、Flume需要先使用yum install flume命令安装，Flume的默认存放位置为/user/lib/flume/conf/flume.conf，vi进去后进行相应的修改，有两个位置需要注意，第一个是spoolDir后跟log所在HDFS中的文件夹名！切记，不是跟具体的log文件或者txt文件！（例如：spoolDir=/tmp/flume/），第二个是path后面是Active NameNode的HDFS路径
+（例如：path＝hdfs：//172.16.2.77:8020/user/datadir），在flume.conf配置中默认指定缓冲区积攒到1k就写入HDFS中
+10、养成在Inceptor中使用命令desc formatted <table名>；来查看各个表的底层结构和属性！！！
+11、
+    #创建内表，内表加载hdfs上的数据，会将被加载文件中的内容剪切走。
+    #外表没有这个问题，所以在实际的生产环境中，建议使用外表。
+12、hadoop fs：命令使用面最广，可以操作任何文件系统。
+        hdfs dfs：命令只能操作HDFS文件系统相关。
 
 ##附录（示例代码）
 ```
@@ -151,9 +279,6 @@ create table sql_hbase11(id string, name string,sex string) stored by 'org.apach
 with serdeproperties("hbase.columns.mapping"=":key,info:name,info:sex") tblproperties("hbase.table.name"="test11");
 
 insert into sql_hbase11(id,name,sex) values("11","zhang","male");
-
-
-
 
 
 
