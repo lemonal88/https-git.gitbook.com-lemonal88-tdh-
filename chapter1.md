@@ -87,11 +87,14 @@ beeline -u jdbc:hive2://<Inceptor ip>:10000/
 
 （弃用没加安全认证的hive1登陆命令为：transwarp -t -h <Inceptor ip>
 
-
+7、操作数据库
+```
 >show databases;
 >use database;
 >show tables;
 >create table country(id int, name string);
+```
+
 
 
 
