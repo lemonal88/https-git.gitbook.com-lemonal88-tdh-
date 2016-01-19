@@ -43,7 +43,7 @@ insert into table t4 select * from t3;
 ```
 
 
-二、创建分区表
+二、分区表
 
 A、创建单值分区
 
@@ -99,7 +99,7 @@ show partitions rangepart;
 ```
 
 
-三、创建分桶表（必须创建外表，只支持从外表导入数据去1，在分桶表中经常做聚合和join操作，速度非常快。另外分桶规则主要分为1、int型，按照数值取模，分几个桶就模几2、string型，按照hash表来分桶）
+三、分桶表（必须创建外表，只支持从外表导入数据，在分桶表中经常做聚合和join操作，速度非常快。另外分桶规则主要分为1、int型，按照数值取模，分几个桶就模几2、string型，按照hash表来分桶）
 
 （1）、创建分桶表bucket_tbl
 ```
@@ -129,7 +129,9 @@ insert into table bucket_tbl select *from bucket_info;
 
 
 
---建立ORC格式表，如下三种方式（必须要分桶，可以做group by，order by操作）
+
+
+>建立ORC格式表，如下三种方式（必须要分桶，可以做group by，order by操作）
 
 （1）
 ```
@@ -150,14 +152,10 @@ insert into country select * from ex_tbl;
 ```
 
 
+
 --建立ORC事务表（必须要分桶，既可以单值插入，又可以通过外表插入）
-
-（1）
-```
-create table country(id int, country string) clustered by (id)into 3 buckets stored as orc tblproperties("transactional" = "true");
-```
+（1）create table country(id int, country string) clustered by (id)into 3 buckets stored as orc tblproperties("transactional" = "true");
 （2）create external表
-
 （3）insert into country select * from external表
 
 
@@ -173,7 +171,6 @@ info------>name
 info------>sex
 
 注意事项：
-
 1、HDFS不能直接直接load到Inceptor中的ORC事务表中，（只能load到普通表和ORC表中）要想在ORC事务表里插入数据有两种方法：a.建立一张外表，再将HDFS load进外表上，在insert into select * from external table    b.由于ORC事务表支持增删改查，所以可以使用单值插入语句insert into table country values（101，japan）
 2、查看分区表的命令是show partitions [table名] 
 3、使用命令hdfs dfs -ls /user/country
