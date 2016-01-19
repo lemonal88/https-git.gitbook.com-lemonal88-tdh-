@@ -13,3 +13,21 @@ C、使用chkconfig iptables off关闭防火墙
 D、在/mnt目录中创建disk1目录
 
 E、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
+
+
+##安装步骤：
+
+1、进入/mnt/disk1目录
+
+
+   
+ ![](1.png)
+ 
+ 
+ 2、解压其中的transwarp安装包并安装
+ ```
+ >tar -zxvf transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz
+ >cd transwarp
+ >./install
+ 
+ ```
