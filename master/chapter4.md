@@ -10,9 +10,12 @@
 ```
 java -jar squirrel-sql-3.6-standard.jar
 ```
-待安装好后进入windows安装目录下运行squirrel-sql.bat
+（待安装好后进入windows安装目录下运行squirrel-sql.bat）
 
 3、连接数据库需要有驱动，添加外部JDBC的jar包，将inceptor-driver-4.2.2.jar添加进去
+
+![](10.png)
+
 
 4、完成安装
 
