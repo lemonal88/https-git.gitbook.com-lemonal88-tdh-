@@ -60,7 +60,10 @@ hadoop fs -put /tmp/a.txt /user/datadir
 ```
 
 (3)将HDFS中的a.txt文件load到single_tbl单值分区表，即将a这个文档都设置成A标签
+```
 load data inpath ‘user/datadir/a.txt’ single_tbl partition(level='A');
+```
+
 
 B、创建范围分区表（用于避免全表扫描，快速检索，导入数据的方法也很少，只能通过从另一个表插入到范围表中，其产生原因是为了规避单值分区每创建一个表就会产生一个小文件，而范围分区则是每个分区存储一个文件）
 （1）创建范围分区表rangepart
