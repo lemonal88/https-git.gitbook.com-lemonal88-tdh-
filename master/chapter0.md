@@ -63,7 +63,7 @@ D、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 Hyperbase、Inceptor－SQL，其他可以暂时不用安装
 
 （1）Zookeeper：将全部节点都添加上（一定要为奇数），其他默认
-HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.datanode.data.dir，其他默认配置
+HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.datanode.data.dir，分别在/home/hadoop节点下的hdfs_image和data目录下。
 
 （2）YARN：基础参数中配置yarn.nodemanager.resource.cpu-vcores的CPU核数，配置yarn.nodemanager.resource.memory-mb的内存大小，推荐配置为YARN的核数全给，内存给一半
 
