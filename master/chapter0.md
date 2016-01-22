@@ -21,7 +21,7 @@ D、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 ![](1.png)
  
  
- 2、解压其中的transwarp安装包并安装
+ 2、使用root用户解压其中的transwarp安装包并安装
  ```
  >tar -zxvf transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz
  >cd transwarp
