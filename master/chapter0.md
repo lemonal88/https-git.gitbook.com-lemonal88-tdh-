@@ -77,8 +77,7 @@ b、在所有NameNode节点上，清空dfs.namenode.name.dir配置的相应目�
 
 c、在所有DataNode节点上，清空dfs.datanode.data.dir配置的相应目录的所有内容
 
-完成上述步骤后，可点击界面上的重试键，重新执行"format namenode"
-
+完成上述步骤后，可点击界面上的重试键
 
 
 （2）YARN：基础参数中配置yarn.nodemanager.resource.cpu-vcores的CPU核数，配置yarn.nodemanager.resource.memory-mb的内存大小，推荐配置为YARN的核数全给，内存给一半
