@@ -63,7 +63,25 @@ D、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 Hyperbase、Inceptor－SQL，其他可以暂时不用安装
 
 （1）Zookeeper：将全部节点都添加上（一定要为奇数），其他默认
-HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.datanode.data.dir，分别在/home/hadoop节点下的hdfs_image和data目录下。
+
+（2）HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.datanode.data.dir，分别在/home/hadoop节点下的hdfs_image和data目录下。另外需要特别注意的是，在安装HDFS过程中可能会遇到format namenode失败的现象，查看界面上的操作日志，可以看到报以下这个错误：
+
+
+
+
+这个错误的解决办法是：
+
+a、在所有的JournalNode上，删除/hadoop/journal中所有的内容，然后执行service hadoop-hdfs-journalnode-hdfs1 restart
+
+b、在所有NameNode节点上，清空dfs.namenode.name.dir配置的相应目录的所有内容
+
+c、在所有DataNode节点上，清空dfs.datanode.data.dir配置的相应目录的所有内容
+
+完成上述步骤后，可点击界面上的重试键，重新执行"format namenode"
+
+
+
+
 
 （2）YARN：基础参数中配置yarn.nodemanager.resource.cpu-vcores的CPU核数，配置yarn.nodemanager.resource.memory-mb的内存大小，推荐配置为YARN的核数全给，内存给一半
 
