@@ -66,7 +66,7 @@ Hyperbase、Inceptor－SQL，其他可以暂时不用安装
 
 （2）HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.datanode.data.dir，分别在/home/hadoop节点下的hdfs_image和data目录下。另外需要特别注意的是，在安装HDFS过程中可能会遇到format namenode失败的现象，查看界面上的操作日志，可以看到报以下这个错误：
 
-
+ ![](110.jpg)
 
 
 这个错误的解决办法是：
