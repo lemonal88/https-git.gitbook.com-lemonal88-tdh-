@@ -1,6 +1,6 @@
 # 第三章 Sqoop安装与操作
 ##sqoop操作步骤：
-（1）在任意节点上安装sqoop
+（1）在YARN的meta安装sqoop
 yum install sqoop
 
 （2）由于Inceptor-SQL中metastore中已经安装了mysql，就不需要安装mysql了
