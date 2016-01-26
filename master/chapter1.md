@@ -19,7 +19,7 @@ hadoop fs -put  <path>/data.txt /user/datadir
 
 （3）将上传进HDFS的文件load到Inceptor事先建立好的s3表中
 ```
-load data inpath ‘user/datadir/data.txt’ into table s3；
+load data inpath ‘/user/datadir/data.txt’ into table s3；
 ```
 
 （注意本步操作可能会报load数据没有权限，HDFS上的数据和表的权限不一致
