@@ -12,7 +12,7 @@ A、从HDFS导入数据
 hadoop fs -mkdir /user/datadir
 ```
 
-（2）首先将本地path存放的数据文件put到HDFS目录中(如果使用的是root用户put操作，必须先使用sudo -u hdfs hadoop fs -chown -R hive /user/datadir,修改datadir目录的owner，)
+（2）首先将本地path存放的数据文件put到HDFS目录中(如果使用的是root用户put操作，必须先使用sudo -u hdfs hadoop fs -chown -R hive /user/datadir,修改datadir目录的owner为hive，不然执行下面的语句会报权限错误)
 ```
 hadoop fs -put  <path>/data.txt /user/datadir
 ```
