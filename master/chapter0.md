@@ -8,7 +8,7 @@ A、在/etc/hosts文件中添加主机名，添加在最后一行，如192.168.1
 
 B、使用chkconfig iptables off关闭防火墙
 
-C、在/mnt目录中创建disk1目录
+C、在/mnt目录中创建disk1目录（若配有SSD固态硬盘还需创建randisk目录)
 
 D、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 
