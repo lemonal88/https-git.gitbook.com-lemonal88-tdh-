@@ -23,7 +23,7 @@ load data inpath ‘/user/datadir/data.txt’ into table s3；
 ```
 
 （注意本步操作可能会报load数据没有权限，HDFS上的数据和表的权限不一致
-使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）hive为owner名字，可以通过ESCE table;命令查看表中owner type字段名称）
+使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）hive为owner名字）
 
 B、从其他表导入
 
