@@ -41,6 +41,8 @@ Hyperbase    ————> HBase
 
 再看下面这张图
 
+![](14.png)
+
 
 
 
