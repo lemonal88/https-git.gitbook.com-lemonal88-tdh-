@@ -12,7 +12,8 @@ A、从HDFS导入数据
 hadoop fs -mkdir /user/datadir
 ```
 
-（2）首先将本地path存放的数据文件put到HDFS目录中
+（2）首先将本地path存放的数据文件put到HDFS目录中（注意本步操作可能会报load数据没有权限，HDFS上的数据和表的权限不一致
+使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）hive为owner名字）
 ```
 hadoop fs -put  <path>/data.txt /user/datadir
 ```
@@ -22,8 +23,6 @@ hadoop fs -put  <path>/data.txt /user/datadir
 load data inpath ‘/user/datadir/data.txt’ into table s3；
 ```
 
-（注意本步操作可能会报load数据没有权限，HDFS上的数据和表的权限不一致
-使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）hive为owner名字）
 
 B、从其他表导入
 
