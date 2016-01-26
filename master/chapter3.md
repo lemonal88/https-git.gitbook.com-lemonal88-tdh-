@@ -52,7 +52,7 @@ agent1.sinks.sink1.channel = ch1
 5、退回到usr/lib/flume目录下，执行以下flume上传命令
 
 ```
-bin/flume-ng agent -n agent1 -c conf -f conf/flume.conf -Dflume.root.logger=INFO,consoles
+bin/flume-ng agent -n agent1 -c conf -f conf/flume.conf -Dflume.root.logger=INFO,console
 ```
 
 6、检查HDFS目录中/user/flume是否已经有刚刚上传的a.txt文件
