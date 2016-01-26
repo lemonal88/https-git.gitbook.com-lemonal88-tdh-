@@ -38,7 +38,7 @@ sqoop list-tables \
 --connect jdbc:mysql://172.16.1.15:3306/db1
 ```
 
-（8）从mysql————>HDFS上（import，将mysql中的db1数据库里面的表导入到/user/datadir）
+（8）从mysql————>HDFS上（import，将mysql中的db1数据库里面的表导入到/user/datadir，这里的datadir目录一定不要事先创建，不然会报错，语句执行的时候会自动创建目录的！）
 ```
 sqoop import \
 --username tdh \
