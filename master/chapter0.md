@@ -4,7 +4,7 @@
 
 ##安装前准备
 
-A、在/etc/hosts文件中添加主机名，添加在最后一行，如192.168.1.200 dhc-1(注意hostname不支持使用'_','.')
+A、在/etc/hosts文件中添加主机名，添加在最后一行，如192.168.1.200 dhc-1(注意hostname不支持使用'_','.')，配置完成后可以互相ping下，如果ping不通，请检查/etc/hosts文件和静态IP的设置
 
 B、使用chkconfig iptables off关闭防火墙
 
