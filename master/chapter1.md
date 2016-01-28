@@ -218,7 +218,7 @@ create table ccc3（a int）location ‘user/ccc3’；
 
 ##附录（示例代码）
 ```
---登录Inceptor
+--登录Inceptor server节点
 beeline -u jdbc:hive2://172.16.2.75:10000/
 
 --DDL
