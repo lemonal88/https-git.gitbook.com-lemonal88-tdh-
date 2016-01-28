@@ -184,16 +184,16 @@ insert into orc_tbl select * from external_tbl;
 hdfs：//nameservice/inceptorsql1/user/hive/warehouse/
 在Inceptor创建数据库时一般使用它的default默认数据库，若自己建立数据库请不要指定location，还有自己建立的数据库可能会因为权限不够而造成一些操作失败报错。
 eg.（1）
-create database ccc location ‘/user/ccc’；
-create table ccc1；
+create database ccc location '/user/ccc'；
+create table ccc1;
 上述语句建立的数据库位置为user/ccc/hive/ccc1
 
 （2）
-create table ccc2（a int）；
+create table ccc2(a int);
 表示创建的ccc2表到默认路径user/ccc/hive/ccc2
 
 （3）
-create table ccc3（a int）location ‘user/ccc3’；
+create table ccc3(a int) location 'user/ccc3'；
 上述语句建立表的位置在user/ccc3
 
 5、外表的作用是load导数据使用的，起到的是媒介作用，而ORC表则是做具体的操作的，外表一般是和ORC表配合使用的
