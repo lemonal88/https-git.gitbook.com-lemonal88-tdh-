@@ -103,10 +103,10 @@ show partitions rangepart;
 
 （1）、创建分桶表bucket_tbl
 ```
-create table bucket_tbl(id int, name string)clustered by (id) into 3 buckets;
+create table bucket_tbl(id int, name string) clustered by (id) into 3 buckets;
 ```
 
-（2）、创建外表bucket_info(这里需要注意的是，一定要指定分隔符，特别是在将关系型数据从HDFS上自动上传到创建的external表，若不指定分隔符，则查出来的全部都是null值)
+（2）、创建外表bucket_info,bucket_info表会自动将HDFS目录/user/datadir中的数据自动load进表里，这和普通表需要手动进行load不一样(还需要注意的是，一定要指定分隔符，特别是在将关系型数据从HDFS上自动上传到创建的external表，若不指定分隔符，则查出来的全部都是null值)
 ```
 create external table bucket_info(id int, name string)row format delimited fields terminated by ',' location '/user/datadir';
 ```
@@ -157,7 +157,7 @@ insert into country select * from ex_tbl;
 
 （1）
 ```
-create table country(id int, country string) clustered by (id)into 3 buckets stored as orc tblproperties("transactional" = "true");
+create table country(id int, country string) clustered by (id) into 3 buckets stored as orc tblproperties("transactional" = "true");
 ```
 （2）
 ```
