@@ -157,11 +157,11 @@ insert into country select * from ex_tbl;
 
 （1）
 ```
-create table country(id int, country string) clustered by (id) into 3 buckets stored as orc tblproperties("transactional" = "true");
+create table orc_tbl(id int, country string) clustered by (id) into 3 buckets stored as orc tblproperties("transactional" = "true");
 ```
-（2）(创建外表需要注意的是，一定要指定分隔符，特别是在将关系型数据从HDFS上自动上传到创建的external表，若不指定分隔符，则查出来的全部都是null值)
+（2）(创建外表需要注意的是，一定要指定分隔符，不然当external表自动加载HDFS中的/user/datadir时不知道以什么分隔数据，造成查询出的数据全部都是null值)
 ```
-create external 表(id int,country string) row format delimited fields terminated by ',' location '/user/tdh/externaltbl';
+create external table external_tbl(id int,country string) row format delimited fields terminated by ',' location '/user/datadir';
 ```
 （3）
 ```
