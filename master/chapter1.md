@@ -163,7 +163,13 @@ create table orc_tbl(id int, country string) clustered by (id) into 3 buckets st
 ```
 create external table external_tbl(id int,country string) row format delimited fields terminated by ',' location '/user/datadir';
 ```
-（3）
+
+（3）设置分桶开关
+
+```
+set hive.enforce.bucketing=true;
+```
+（4）
 ```
 insert into orc_tbl select * from external_tbl;
 ```
