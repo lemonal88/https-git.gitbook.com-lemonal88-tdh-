@@ -178,7 +178,7 @@ insert into orc_tbl select * from external_tbl;
 
 2、查看分区表的命令是show partitions [table名] 
 
-3、使用命令hdfs dfs -ls /user/country
+3、使用命令hdfs dfs -ls /user/country（或者使用hadoop fs -ls /user/country命令）
 
 4、默认数据库存放位置
 hdfs：//nameservice/inceptorsql1/user/hive/warehouse/
