@@ -101,7 +101,7 @@ show partitions rangepart;
 ###三、分桶表
 （必须创建外表，只支持从外表导入数据，在分桶表中经常做聚合和join操作，速度非常快。另外分桶规则主要分为1、int型，按照数值取模，分几个桶就模几2、string型，按照hash表来分桶）
 
-（1）、创建分桶表bucket_tbl(这里分桶的大小是用表的总数据大小除以200M，经实际优化测试，每个桶的数据为200M左右处理速度最优)
+（1）、创建分桶表bucket_tbl(这里分桶的大小是用表的总数据大小除以200M，经实际优化测试，每个桶的数据为200M处理速度最优)
 ```
 create table bucket_tbl(id int, name string) clustered by (id) into 3 buckets;
 ```
