@@ -26,14 +26,13 @@ agent1.sources = source1
 agent1.sinks = sink1
 agent1.channels = ch1
 
-# Describe/configure the source,下面的spoolDir一定要写本地存放log或txt的文件夹名，flume上传会将目录下所# 有log或txt文件都上传到HDFS中！！！！！
+# Describe/configure the source,下面的spoolDir一定要写本地存放log或txt的文件夹名，flume上传会将目录下所有log或txt文件都上传到HDFS中！！！！！
 agent1.sources.source1.type = spooldir
 agent1.sources.source1.spoolDir =/tmp
 agent1.sources.source1.ignorePattern = .*dat.*
 
 
-# Describe the sink，注意下面的path为Active Name Node，如果报standby错误，则去Manager中查看最新的
-# Active Name Node
+# Describe the sink，注意下面的path为Active Name Node，如果报standby错误，则去Manager中查看最新的Active Name Node
 agent1.sinks.sink1.type = hdfs
 agent1.sinks.sink1.hdfs.path = hdfs://<Active Name Node IP>:8020/user/flume/
 agent1.sinks.sink1.hdfs.hdfs.rollInterval = 60
