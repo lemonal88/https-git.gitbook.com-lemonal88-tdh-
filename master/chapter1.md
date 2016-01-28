@@ -193,7 +193,7 @@ create table ccc2(a int);
 表示创建的ccc2表到默认路径user/ccc/hive/ccc2
 
 （3）
-create table ccc3(a int) location 'user/ccc3'；
+create table ccc3(a int) location 'user/ccc3';
 上述语句建立表的位置在user/ccc3
 
 5、外表的作用是load导数据使用的，起到的是媒介作用，而ORC表则是做具体的操作的，外表一般是和ORC表配合使用的
