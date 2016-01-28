@@ -48,7 +48,7 @@ A、创建单值分区
 
 (1)创建单值分区表（每创建一个单值分区表就会产生一个小文件，这里只有一个name值）
 ```
-create table single_tbl(name string) partitioned by(level string)；
+create table single_tbl(name string) partitioned by(level string);
 ```
 
 (注意后面的partition分区键和文本是无关的！文本只导入name！分区键是通过load语句中的level具体标识来指定的)
