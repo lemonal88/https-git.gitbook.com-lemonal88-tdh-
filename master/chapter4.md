@@ -16,6 +16,7 @@ java -jar squirrel-sql-3.6-standard.jar
 URL：jdbc:hive2://<Inceptor server IP>:10000/ (/后面不写数据库名代表默认的default数据库)最后在Extra Class Path里添加外部JDBC的jar包，将inceptor-driver-4.2.2.jar添加进去，点击List Drivers，下面的Class Name就会出现默认的org.apache.hive.jdbc.HiveDriver，选中即可进行下一步
 
 ![](11.png)
+![](12.png)
 
 
 4、完成安装，添加别名，进行查询
