@@ -165,7 +165,7 @@ create external table external_tbl(id int,country string) row format delimited f
 ```
 （3）
 ```
-insert into country select * from external表
+insert into orc_tbl select * from table_tbl;
 ```
 
 （注意：ORC只是一种表的格式类型，建表时指定了transactional" = "true"，则表明这是一个事务表，必须要分桶，若没有指定则只是普通的ORC表，不需要进行分桶操作）
