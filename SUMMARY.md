@@ -6,5 +6,6 @@
 * [Sqoop](master/chapter2.md)
 * [Flume](master/chapter3.md)
 * [使用JDBC、ODBC工具连接Inceptor](master/chapter4.md)
-* [HBase](/master/chapter5.md)
+* [HBase](master/chapter5.md)
+* Oozie
 
