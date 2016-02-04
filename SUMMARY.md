@@ -7,5 +7,5 @@
 * [Flume](master/chapter3.md)
 * [使用JDBC、ODBC工具连接Inceptor](master/chapter4.md)
 * [HBase](master/chapter5.md)
-* Oozie
+* [Oozie](master/chapter6.md)
 
