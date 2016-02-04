@@ -9,5 +9,6 @@
 * [HBase](master/chapter5.md)
 * [Oozie](master/chapter6.md)
 * [Eistic search](master/chapter7.md)
-* [Kafka](/master/chapter8.md)
+* [Kafka](master/chapter8.md)
+* Spark streaming
 
