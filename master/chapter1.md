@@ -127,6 +127,8 @@ set hive.enforce.bucketing=true;
 insert into table bucket_tbl select *from bucket_info;
 ```
 
+###四、holodesk
+
 
 
 
