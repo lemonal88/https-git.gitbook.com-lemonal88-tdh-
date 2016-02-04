@@ -1,6 +1,6 @@
 # HBase？
 
-HBase是一个分布式、面向列的，并且适合于非结构化数据存储的数据库。
+HBase是一个分布式、面向列的，并且适合于非结构化数据存储的数据库且没有数据库名的概念，只有表的概念，所有数据都是混杂的放在一起的。
 
 
 
@@ -83,6 +83,8 @@ with serdeproperties('hbase.columns.mapping'=':key,info:name,info:sex') tblprope
 
 
 上述建立了一张外表，stored by制定HBase的存储格式，with后面是序列化和反序列化，作用是进行map映射，从上面的语句可以看出，将id映射成了key、将name、和sex映射成了info（列簇）
+
+
 
 
 
