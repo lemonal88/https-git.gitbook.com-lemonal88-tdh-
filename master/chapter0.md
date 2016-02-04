@@ -106,3 +106,8 @@ beeline -u jdbc:hive2://<Inceptor ip>:10000/
 >create table country(id int, name string);
 ```
 
+
+安装常见错误汇总：
+1、format namenode出错，造成format namenode失败的原因是因为原TDH没有删除干净，在hadoop/namenode—dir／current里面有个锁，删除后可以使用命令etc/init.d/hadoop-hdfs-namenode start来启动namenode节点
+Manager的相关
+
