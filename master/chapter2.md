@@ -11,7 +11,7 @@ tar -zxvf mysql-connector-java-5.1.38tar.gz
 ```
 （4）cd进刚刚解压后的目录，将里面的mysql-connector-java-5.1.38-bin.jar包copy到/usr/lib/sqoop/lib本地目录下
 
-（5）在Inceptor Server节点上输入mysql，执行Grant操作：
+（5）在Inceptor Server节点上输入mysql -u [用户名] -p连接数据库,此时提示输入密码，通过后输入mysql命令，再执行Grant操作：
 
 ----add user to mysql（username＝tdh，password＝123456），授权可以访问所有数据库
 ```
