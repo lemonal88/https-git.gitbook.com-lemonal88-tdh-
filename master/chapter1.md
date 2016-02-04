@@ -7,13 +7,14 @@ Inceptor是一种交互式分析引擎，本质是一种SQL翻译器。Inceptor�
 ###一、普通表导入数据
 A、从HDFS导入数据
 
-（1）创建HDFS数据目录，在本地创建一个存放数据的文件夹
+（1）创建HDFS数据目录，在本地创建一个存放数据的文件夹，为了区分不同用户和不同数据源，建立以下两个目录
 ```
-hadoop fs -mkdir /user/datadir
+hadoop fs -mkdir -p /user/user1/data／inceptor
+hadoop fs -mkdir -p /user/user1/data／hyperbase
 ```
 
 （2）首先将本地path存放的数据文件put到HDFS目录中（注意本步操作可能会报load数据没有权限，HDFS上的数据和表的权限不一致
-使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）命令进行owner的修改，hive为owner名字）
+使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）命令进行owner的修改，hive为owner名字）或者使用sudo -u hdfs hadoop fs -chmod -R 777 /user/user1
 ```
 hadoop fs -put  <path>/data.txt /user/datadir
 ```
