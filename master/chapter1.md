@@ -14,7 +14,7 @@ hadoop fs -mkdir -p /user/user1/data／hyperbase
 ```
 
 （2）首先将本地path存放的数据文件put到HDFS目录中（注意本步操作可能会报load数据没有权限，HDFS上的数据和表的权限不一致
-使用：（sudo -u hdfs hadoop fs -chown -R hive /user/datadir）命令进行owner的修改，hive为owner名字）或者使用sudo -u hdfs hadoop fs -chmod -R 777 /user/user1
+使用：（sudo -u hdfs hadoop fs -chown -R hive /user/＊）命令进行owner的修改，hive为owner名字）或者使用sudo -u hdfs hadoop fs -chmod -R 777 /user/＊
 ```
 hadoop fs -put  <path>/data.txt /user/datadir
 ```
