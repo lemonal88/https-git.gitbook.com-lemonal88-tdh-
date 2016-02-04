@@ -129,6 +129,12 @@ insert into table bucket_tbl select *from bucket_info;
 
 ###四、holodesk表
 
+（1）、
+
+（2）、
+
+（3）、
+
 
 
 
