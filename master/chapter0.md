@@ -85,8 +85,7 @@ c、在所有DataNode节点上，清空dfs.datanode.data.dir配置的相应目�
 （3）HyperBase：配置master.memory内存大小，（若内存大小为8G，那么这里就应该是8G-YARN的                                 yarn.nodemanager.resource.memory-mb内存大小），Mastermemory相当于NN，Region server类似于DN，一般Master memory不耗费内存，主要Region server比较耗费内存
 
 （4）Inceptor-SQL(SQL on spark)：
-高级参数里面可以设置安全护栏，即hive.server.enable，值为FALSE不开启，值为                        TRUE后面服务就需要安装kerberos认证了，这项看具体实际需求。另外在资源分配选项中，executor有                                   Fixed（同构机器，每台机器配置差不多）和Ratio（异构机器，每台机器配置相差很大）两种，一般选择Fixed，下  
-面的内核和内存千万不能超过YARN所设置的内核数和内存大小的值，因为Inceptor-SQL是从YARN那里申请                    资源的！推荐配置为内核数：内存＝1:2（1个内核配置2GB），
+高级参数里面可以设置安全护栏，即hive.server.enable，值为FALSE不开启，值为                        TRUE后面服务就需要安装kerberos认证了，这项看具体实际需求。另外在资源分配选项中，executor有                                   Fixed（同构机器，每台机器配置差不多）和Ratio（异构机器，每台机器配置相差很大）两种，一般选择Fixed，下面的内核和内存千万不能超过YARN所设置的内核数和内存大小的值，因为Inceptor-SQL是从YARN那里申请                    资源的！推荐配置为内核数：内存＝1:2（1个内核配置2GB），
 Inceptor server节点和Inceptor metastore节点需要安装在同一节点上，不然跨节点对表的操作会延迟会很高，Inceptor metastore存储的是表的信息，
 记住Inceptor metastore节点的IP地址（即Inceptor server地址）因为使用sqoop服务要在metastore节点上操作mysql数据库（操作之前还需添加mysql的驱动）
 
@@ -108,6 +107,13 @@ beeline -u jdbc:hive2://<Inceptor ip>:10000/
 
 
 安装常见错误汇总：
-1、format namenode出错，造成format namenode失败的原因是因为原TDH没有删除干净，在hadoop/namenode—dir／current里面有个锁，删除后可以使用命令etc/init.d/hadoop-hdfs-namenode start来启动namenode节点
-Manager的相关
+1、format namenode出错，造成format namenode失败的原因是因为原TDH没有删除干净，在hadoop/namenode—dir/current里面有个锁，删除后可以使用命令etc/init.d/hadoop-hdfs-namenode start来启动namenode节点
+2、如果HBase安装不成功，region server报红，首先cd /usr/lib/bin目录执行zkcli.sh -service [任意一台zookeeper主机ip]再使用rmr /hyperbase命令将里面的hyperbase目录删除，里面的原数据会丢失
+3、Inceptor报黄就去YARN中检查
+
+
+常用命令：
+1、Manager的相关命令可以使用：service --status-all来查看
+2、显示hdfs集群的命令是：hadoop dfsadmin -report
+3、使HDFS中数据平衡的命令是：hdfs balancer
 
