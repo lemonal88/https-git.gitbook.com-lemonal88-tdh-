@@ -128,8 +128,9 @@ insert into table bucket_tbl select *from bucket_info;
 ```
 
 ###四、holodesk表
+（可以基于内存也可以基于ssd）
 
-（1）、
+（1）、建立holodesk表
 
 （2）、
 
