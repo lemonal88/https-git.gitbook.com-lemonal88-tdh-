@@ -30,7 +30,7 @@ sqoop list-databases \
 --connect jdbc:mysql://172.16.1.15:3306/
 ```
 
-（7）浏览mysql数据库中的表，db1为mysql中的一个数据库，可以使用describe [table名]
+（7）浏览mysql数据库中的表，db1为mysql中的一个数据库，可以使用describe [table名]命令查看mysql中表的信息
 ```
 sqoop list-tables \
 --username tdh \
