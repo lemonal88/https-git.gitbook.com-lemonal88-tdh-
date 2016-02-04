@@ -30,7 +30,7 @@ sqoop list-databases \
 --connect jdbc:mysql://172.16.1.15:3306/
 ```
 
-（7）浏览mysql数据库中的表，db1为mysql中的一个数据库
+（7）浏览mysql数据库中的表，db1为mysql中的一个数据库，可以使用describe [table名]
 ```
 sqoop list-tables \
 --username tdh \
@@ -38,7 +38,7 @@ sqoop list-tables \
 --connect jdbc:mysql://172.16.1.15:3306/db1
 ```
 
-（8）从mysql————>HDFS上（import，将mysql中的db1数据库里面的表导入到/user/datadir，这里的datadir目录一定不要事先创建，不然会报错，语句执行的时候会自动创建目录的！最后一行的－m表示map成4个）
+（8）从mysql————>HDFS上（import，将mysql中的db1数据库里面的表导入到/user/datadir，这里的datadir目录一定不要事先创建，不然会报错，语句执行的时候会自动创建目录的！最后一行的－m表示map成4个文件）
 ```
 sqoop import \
 --username tdh \
