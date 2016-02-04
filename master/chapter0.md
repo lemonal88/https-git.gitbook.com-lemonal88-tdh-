@@ -109,9 +109,10 @@ beeline -u jdbc:hive2://<Inceptor ip>:10000/
 ##安装常见错误汇总：
 1、format namenode出错，造成format namenode失败的原因是因为原TDH没有删除干净，在hadoop/namenode—dir/current里面有个锁，删除后可以使用命令etc/init.d/hadoop-hdfs-namenode start来启动namenode节点
 
-2、如果HBase安装不成功，region server报红，首先cd /usr/lib/bin目录执行zkcli.sh -service [任意一台zookeeper主机ip]再使用rmr /hyperbase命令将里面的hyperbase目录删除，要注意的是里面的原数据会丢失
+2、如果HBase安装不成功，region server报红，首先cd /usr/lib/bin目录执行zkcli.sh -service [任意一台zookeeper主机ip]，再使用rmr /hyperbase命令将里面的hyperbase目录删除，要注意的是里面的原数据会丢失
 
 3、Inceptor报黄就去YARN中检查
+
 
 
 ##常用命令：
