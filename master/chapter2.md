@@ -45,7 +45,7 @@ sqoop import \
 --password 123456 \
 --connect jdbc:mysql://172.16.1.15:3306/db1 \
 --table country \
---target-dir /user/datadir
+--target-dir /user/user1/data/sqoop -m 4
 ```
 
 （9）从HDFS————>mysql表上（export）
