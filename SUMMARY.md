@@ -8,4 +8,5 @@
 * [使用JDBC、ODBC工具连接Inceptor](master/chapter4.md)
 * [HBase](master/chapter5.md)
 * [Oozie](master/chapter6.md)
+* Eistic search
 
