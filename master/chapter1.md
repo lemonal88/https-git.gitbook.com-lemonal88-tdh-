@@ -131,13 +131,15 @@ insert into table bucket_tbl select *from bucket_info;
 （holodesk表既可以基于内存也可以基于ssd存储和查询，holodesk会存两份，一份存在内存或者ssd中，一份存在HDFS中，这样可能在查询的性能上有所延迟）
 
 建立holodesk表之前最好先建立cube，cube一般为3-5列，表很小，在Inceptor中建立cube内表，取的速度很快，遍历会很快，cube不能将所有的数据都放入内存，所以建内表时，将部分需要的数据放在内存中，因为cube只有3-4列，大大简化了原ssd中的大数据集，查询速度会很快，所以说一般holodesk是和cube配合使用的。内存表创建有两种方式：第一种通过CTAS建表，建表时数据即填入，这种情况下，内存表不能分区或者分桶。第二种通过创建空表，此时内存表可以分区或者分桶，之后可以通过Insert into select插入数据。
-（1）、建立holodesk表
-
+A、通过CTAS建表
+（1）、
 
 
 （2）、
 
 （3）、
+
+B、通过创建空表建表，再插入
 
 
 
