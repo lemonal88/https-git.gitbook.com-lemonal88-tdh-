@@ -131,7 +131,8 @@ insert into table bucket_tbl select *from bucket_info;
 （holodesk表既可以基于内存也可以基于ssd存储和查询，holodesk会存两份，一份存在内存或者ssd中，一份存在HDFS中，这样可能在查询的性能上有所延迟）
 
 建立holodesk表之前最好先建立cube，cube一般为3-5列，表很小，在Inceptor中建立cube内表，取的速度很快，遍历会很快，cube不能将所有的数据都放入内存，所以建内表时，将部分需要的数据放在内存中，因为cube只有3-4列，大大简化了原ssd中的大数据集，查询速度会很快，所以说一般holodesk是和cube配合使用的。内存表创建有两种方式：第一种通过CTAS建表，建表时数据即填入，这种情况下，内存表不能分区或者分桶。第二种通过创建空表，此时内存表可以分区或者分桶，之后可以通过Insert into select插入数据。
-A、通过CTAS建表
+
+A、通过CTAS（create table...as select）建表
 
 ```
 create table table_name tblproperties("cache"="cache_medium","cache.checkpoint"="true|false",["filters"="filter_type"]) as select id,name,sex,date from user_info;
@@ -145,7 +146,9 @@ cluster_key, ...) INTO n BUCKETS TBLPROPERTIES ("cache" = "cache_medium", "cache
 
 ```
 
-说明："cache"="cache_medium"指定计算缓存的介质。可以选择ram,SSD和memeory。只有当服务器上配置有SSD时,才可以选择SSD作为缓存,Inceptor会自动利用SSD为计算加速。"
+说明：
+
+"cache"="cache_medium"指定计算缓存的介质。可以选择ram,SSD和memeory。只有当服务器上配置有SSD时,才可以选择SSD作为缓存,Inceptor会自动利用SSD为计算加速。"
 
 cache.checkpoint"="true|false"指定是否设置checkpoint。如果设置checkpoint,查询 结果会被同步放入HDFS中,在存储了内存表的机器当机时,内存表中的数据可以从HDFS中 直接读取恢复而不需要重新进行查询计算。
 "filters"="filter_type"为可选项,它指定一个过滤器。利用过滤器可以为某些查询进行优化
