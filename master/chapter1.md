@@ -192,7 +192,7 @@ insert into orc_tbl select * from external_tbl;
 
 ##注意事项：
 
-1、HDFS不能直接直接load到Inceptor中的ORC事务表中，(只能load到普通表和ORC表中)要想在ORC事务表里插入数据有两种方法：a.建立一张外表，再将HDFS load进外表上，在insert into select * from external table    b.由于ORC事务表支持增删改查，所以可以使用单值插入语句insert into table country values(101,japan)
+1、HDFS不能直接load到Inceptor中的ORC事务表中，(只能load到普通表和ORC表中)要想在ORC事务表里插入数据有两种方法：a.建立一张外表，再将HDFS load进外表上，再insert into select * from external table    b.由于ORC事务表支持增删改查，也可以使用单值插入语句insert into table country values(101,japan)
 
 2、查看分区表的命令是show partitions [table名] 
 
