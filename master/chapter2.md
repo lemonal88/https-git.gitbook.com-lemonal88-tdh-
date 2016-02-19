@@ -1,4 +1,4 @@
-# 第三章 Sqoop安装与操作
+# 第三章：Sqoop安装与操作
 ##sqoop操作步骤：
 （1）在Inceptor metastore节点服务器上安装sqoop服务
 yum install sqoop
