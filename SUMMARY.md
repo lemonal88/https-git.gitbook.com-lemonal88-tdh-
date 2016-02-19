@@ -11,5 +11,5 @@
 * [Eistic search](master/chapter7.md)
 * [Kafka](master/chapter8.md)
 * [Spark streaming](master/chapter9.md)
-* MPP
+* [MPP](master/chapter10/mpp.md)
 
