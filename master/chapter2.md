@@ -65,9 +65,9 @@ hadoop fs -cat /user/user1/data/inceptor/part-m-00000 | more
 ```
 
 ##注意事项
-在执行导入导出数据时，可能由于yuan资源不足或者其他进程的占用，而一直停留在job作业等待处理中，
+在执行导入导出数据时，可能由于yarn资源不足或者其他进程的占用，而一直停留在job作业等待处理中，
 此时可以通过浏览器进入YARN中Resource Manager节点中的8088端口查看被占用的Application ID号，里面描述为Application master为常驻进程，不用
 杀掉，再在shell中输入命令
-```yuan -application -kill <Application ID>```
+```yarn -application -kill <Application ID>```
 来杀死卡掉的进程，再运行上面的import、export语句。原因很简单，Inceptor-sql的常驻进程ApplicationMaster跑的是spark任务，非常消耗内存使用量，约为7-8G，所以在没有用到Inceptor-SQL的操作场景的时候就应该关闭该服务。
 
