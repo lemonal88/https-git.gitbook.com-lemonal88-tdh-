@@ -10,5 +10,6 @@
 * [Oozie](master/chapter6.md)
 * [Eistic search](master/chapter7.md)
 * [Kafka](master/chapter8.md)
-* [Spark streaming](/master/chapter9.md)
+* [Spark streaming](master/chapter9.md)
+* MPP
 
