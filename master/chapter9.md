@@ -10,4 +10,4 @@
 
 
 ###spark streaming和storm的区别
-根本区别时在于他们的处理模型，storm处理的是每次传入的一个事件，而spark streaming是处理某个时间段窗口内的事件流，storm处理一个事件可以达到秒级延迟，而spark streaming则有几秒钟的延迟
+　　根本区别时在于他们的处理模型，storm处理的是每次传入的一个事件，而spark streaming是处理某个时间段窗口内的事件流，storm处理一个事件可以达到秒级延迟，而spark streaming则有几秒钟的延迟
