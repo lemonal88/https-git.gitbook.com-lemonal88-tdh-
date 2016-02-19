@@ -1,4 +1,4 @@
-# 使用JDBC、ODBC工具连接Inceptor
+# 第五章：使用JDBC、ODBC工具连接Inceptor
 
 ##一、squirrel工具
 介绍：是一个用Java编写的开源数据库工具，可以用来查看/编辑数据库的内容、发出SQL 命令。它可以支持兼容JDBC的数据库，可以使用统一的界面处理不同的数据库，本例为使用小松鼠连接Inceptor
