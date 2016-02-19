@@ -1,4 +1,4 @@
-# 第二章 Inceptor-SQL使用
+# 第二章：Inceptor-SQL使用
 
 ##简介
 
