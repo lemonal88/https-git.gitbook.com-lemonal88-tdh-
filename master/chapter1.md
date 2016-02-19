@@ -78,7 +78,7 @@ create table rangepart(name string)partitioned by range(age int)(
 ```
 （注意分区表为左闭右开区间）
 
-（2）将本地文件put到HDFS的user/datadir的目录中
+（2）将本地文件或文件夹put到HDFS的user/datadir的目录中
 ```
 hadoop fs -put /tmp/b.txt user/datadir
 ```
