@@ -38,7 +38,7 @@ HBase采用列式存储，由于每一列的数据类型都是相似或相近的
 这里我大致的将各个关系进行映射，大家就可以明白了
 
 ```
-Inceptor-SQL ————> Hive
+Inceptor-SQL ————> Hive(Spark)
 Hyperbase    ————> HBase
 ```
 
