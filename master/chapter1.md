@@ -237,7 +237,7 @@ create table ccc3(a int) location 'user/ccc3';
 9、从HDFS中向Mysql中导入数据规定必须先在Mysql中创建临时表，先从HDFS的location目录下导入到tmp表中，再从tmp表导入到Mysql真正的表中
 
 10、Flume需要先使用yum install flume命令安装，Flume的默认存放位置为/user/lib/flume/conf/flume.conf，vi进去后进行相应的修改，有两个位置需要注意，第一个是spoolDir后跟log所在HDFS中的文件夹名！切记，不是跟具体的log文件或者txt文件！（如：spoolDir=/tmp/flume/），第二个是path后面是Active NameNode的HDFS路径
-（如：path=hdfs：//172.16.2.77:8020/user/datadir），在flume.conf配置中默认指定缓冲区积攒到1k就写入HDFS中
+（如：path=hdfs://172.16.2.77:8020/user/datadir），在flume.conf配置中默认指定缓冲区积攒到1k就写入HDFS中
 
 11、养成在Inceptor中使用命令desc formatted <table名>;来查看各个表的底层结构和属性
 
