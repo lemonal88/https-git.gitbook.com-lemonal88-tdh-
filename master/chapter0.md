@@ -120,5 +120,7 @@ beeline -u jdbc:hive2://<Inceptor ip>:10000/
 
 2、显示hdfs集群的命令是：hadoop dfsadmin -report
 
+或者sudo -u hdfs hdfs dfsadmin -reports
+
 3、使HDFS中数据平衡的命令是：hdfs balancer
 
