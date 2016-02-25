@@ -214,7 +214,7 @@ insert into orc_tbl select * from external_tbl;
 
 5、默认数据库存放位置
 hdfs：//nameservice/inceptorsql1/user/hive/warehouse/
-在Inceptor创建数据库时一般使用它的default默认数据库，若自己建立数据库请不要指定location，还有自己建立的数据库可能会因为权限不够而造成一些操作失败报错。
+在Inceptor创建数据库时一般使用它的default默认数据库，若自己建立数据库请不要指定location，还有自己建立的数据库可能会因为权限不够而造成一些操作失败报错。可以使用hadoop fs -ls /inceptorsql1/user/hive/warehouse查看默认目录下存储的数据
 eg.（1）
 create database ccc location '/user/ccc'；
 create table ccc1;
