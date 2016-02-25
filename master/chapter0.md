@@ -95,7 +95,7 @@ Inceptor server节点和Inceptor metastore节点需要安装在同一节点上�
 beeline -u jdbc:hive2://<Inceptor ip>:10000/  
 ```
 
-（弃用没加安全认证的hive1登陆命令为：transwarp -t -h <Inceptor ip>
+（弃用没加安全认证的hive1登陆命令为：transwarp -t -h [Inceptor ip]
 
 7、操作数据库
 ```
