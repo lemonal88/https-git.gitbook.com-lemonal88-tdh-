@@ -31,15 +31,25 @@ URL：jdbc:hive2://<Inceptor server IP>:10000/ (/后面不写数据库名代表�
 ##二、Tableau工具
 1、在官网上下载Tableau软件
 
+![](17.png)
 
+安装完成后需要先注册，再使用datestopper工具进行破解，具体教程请参考
 
-2、创建ODBC
+<http://jingyan.baidu.com/article/3ea51489fbbca152e61bbad2.html>
 
-3、使用远程来添加一个数据源，例如：
+2、安装ODBC驱动程序 
 
-    Data source Name：tdh
-    Description：tdh
-    Host：172.16.2.78
-    Port：10000
-    database：default
-    Hive Server Type：Hive server2
+根据自己的机器安装64位/32位的Hive2驱动包
+
+![](18.png)
+
+3、添加ODBC驱动程序
+
+在CMD中输入odbc，单击添加，找到刚刚安装好的驱动并填写连接参数
+
+![](19.png)
+
+![](20.png)
+
+点击Test，测试成功后点击OK即可
+
