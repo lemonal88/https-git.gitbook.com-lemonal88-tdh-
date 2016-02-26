@@ -33,12 +33,12 @@ HBase采用列式存储，由于每一列的数据类型都是相似或相近的
 
 ###2.1、HBase和Hive联系与区别
 
-星环的Inceptor-SQL就是将开源的Hive进行了二次开发，主要增加了JDBC、ODBC和对SQL-2003解释器的强大功能，那么和HBase有什么区别和联系呢？
+星环的Inceptor-SQL就是将开源的HiveQL进行了二次开发，主要增加了JDBC、ODBC和对SQL-2003解释器的强大功能，那么和HBase有什么区别和联系呢？
 
 这里我大致的将各个关系进行映射，大家就可以明白了
 
 ```
-Inceptor-SQL ————> Hive(Spark)
+Inceptor-SQL ————> HiveQL
 Hyperbase    ————> HBase
 ```
 
@@ -50,7 +50,7 @@ Hyperbase    ————> HBase
 
 
 
-Hive的那些SQL操作底层实际上都是一个个MapReduce或者Spark任务，也就是说，Hive可以访问HDFS上的数据做数据分析，也可以对HBase做数据分析，因为真正的数据要么存放在HDFS分布式文件系统上，要么存放在HBase数据库上。
+HiveQL操作底层实际上都是一个个MapReduce或者Spark任务，也就是说，Hive可以访问HDFS上的数据做数据分析，也可以对HBase做数据分析，因为真正的数据要么存放在HDFS分布式文件系统上，要么存放在HBase数据库上。
 
 
 ###2.2、HBase实例及代码解释
