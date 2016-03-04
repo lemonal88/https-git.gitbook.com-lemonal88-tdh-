@@ -82,7 +82,10 @@ c、在所有DataNode节点上，清空dfs.datanode.data.dir配置的相应目�
 
 （2）YARN：基础参数中配置yarn.nodemanager.resource.cpu-vcores的CPU核数，配置yarn.nodemanager.resource.memory-mb的内存大小，推荐配置为YARN的核数全给，内存给一半
 
-CPU若不知道分几个核数，可以在命令行中执行``````cat /proc/cpuinfo | grep processor | wc -l
+CPU若不知道分几个核数，可以在命令行中执行
+```
+cat /proc/cpuinfo | grep processor | wc -l
+```
 
 （3）HyperBase：配置master.memory内存大小，（若内存大小为8G，那么这里就应该是8G-YARN的                                 yarn.nodemanager.resource.memory-mb内存大小），Mastermemory相当于NN，Region server类似于DN，一般Master memory不耗费内存，主要Region server比较耗费内存
 
