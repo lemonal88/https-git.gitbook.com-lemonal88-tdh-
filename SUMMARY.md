@@ -10,7 +10,7 @@
 * [第七章 Oozie](master/chapter6.md)
 * [第八章 Eistic search](master/chapter7.md)
 * [第九章 Kafka](master/chapter8.md)
-* [第十章 Spark streaming组件](master/chapter9.md)
+* [第十章 Spark streaming](master/chapter9.md)
 * [第十一章 MPP](master/chapter10.md)
 * [附录一：POC实施前准备](master/gettingstartmd.md)
 
