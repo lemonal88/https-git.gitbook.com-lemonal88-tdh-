@@ -8,7 +8,7 @@
 * [第五章 JDBC、ODBC工具连接Inceptor](master/chapter4.md)
 * [第六章 HBase组件](master/chapter5.md)
 * [第七章 Oozie组件](master/chapter6.md)
-* [Eistic search](master/chapter7.md)
+* [第八章 Eistic search组件](master/chapter7.md)
 * [Kafka](master/chapter8.md)
 * [Spark streaming](master/chapter9.md)
 * [MPP](master/chapter10.md)
