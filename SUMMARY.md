@@ -1,7 +1,7 @@
 # Summary
 
 * [简介](README.md)
-* [1.第一章 Transwarp Manager安装](master/chapter0.md)
+* [第一章 Transwarp Manager安装](master/chapter0.md)
 * [2.第二章 Inceptor-SQL组件](master/chapter1.md)
 * [3.第三章 Sqoop组件](master/chapter2.md)
 * [4.第四章 Flume组件](master/chapter3.md)
