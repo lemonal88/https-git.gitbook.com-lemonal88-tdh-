@@ -43,27 +43,27 @@
  
 ####四、安装好Centos6.5以后，打开chrome浏览器，输入安装Manager的本地节点ip地址加端口号8180，如192.168.1.200：8180，进行如下步骤操作：
  
-1. 输入admin、admin进入界面,为了方便多人对Mananger的操作，可以新建多个隶属于admin组的账户，同样可以操作服务器集群，避免了登入登出时被别的用户挤出。
+（1）输入admin、admin进入界面,为了方便多人对Mananger的操作，可以新建多个隶属于admin组的账户，同样可以操作服务器集群，避免了登入登出时被别的用户挤出。
 
-2. 填写集群名称（随意取名）
+（2）填写集群名称（随意取名）
 
-3. 添加机柜（使用/rack1，/rack2......）指定
+（3）添加机柜（使用/rack1，/rack2......）指定
 
-4. 添加节点（可以使用［］来批量添加，如172.16.2.［68-70］）
+（4）添加节点（可以使用［］来批量添加，如172.16.2.［68-70］）
 
-5. 输入root账号和密码进行确认设定
+（5）输入root账号和密码进行确认设定
 
-6. 分配机柜，将刚刚的第一个节点分配到/rack1中，其他两个节点分配到/rack2中
+（6）分配机柜，将刚刚的第一个节点分配到/rack1中，其他两个节点分配到/rack2中
 
-7. 选择需要/etc/hosts来确认网络解析
+（7）选择需要/etc/hosts来确认网络解析
 
-8. 为了负载均衡，将YARN分配到/rack1中，Inceptor－server分配到/rack2中
+（8）为了负载均衡，将YARN分配到/rack1中，Inceptor－server分配到/rack2中
 
 ####五、安装组件和服务，按照左侧栏提示分别需要安装Zookeeper、HDFS、YARN、Hyperbase、Inceptor－SQL，其他可以暂时不用安装
 
-1. Zookeeper：将全部节点都添加上（一定要为奇数），其他默认
+（1）Zookeeper：将全部节点都添加上（一定要为奇数），其他默认
 
-2. HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.datanode.data.dir，分别在/home/hadoop节点下的hdfs_image和data目录下。另外需要特别注意的是，在安装HDFS过程中可能会遇到formatnamenode失败的现象，查看界面上的操作日志，可以看到报以下这个错误：
+（2）HDFS：记住两个重要目录即可，分别为dfs.namenode.name.dir和dfs.datanode.data.dir，分别在/home/hadoop节点下的hdfs_image和data目录下。另外需要特别注意的是，在安装HDFS过程中可能会遇到formatnamenode失败的现象，查看界面上的操作日志，可以看到报以下这个错误：
 
  ![](110.jpg)
 
@@ -76,19 +76,17 @@
 
 - 在所有DataNode节点上，清空dfs.datanode.data.dir配置的相应目录的所有内容
 
-完成上述步骤后，可点击界面上的‘重试’键
 
+（3）YARN：基础参数中配置yarn.nodemanager.resource.cpu-vcores的CPU核数，配置yarn.nodemanager.resource.memory-mb的内存大小，推荐配置为YARN的核数全给，内存给一半
 
-3. YARN：基础参数中配置yarn.nodemanager.resource.cpu-vcores的CPU核数，配置yarn.nodemanager.resource.memory-mb的内存大小，推荐配置为YARN的核数全给，内存给一半
-
-CPU若不知道分几个核数，可以在命令行中执行
+若CPU若不知道分几个核数，可以在命令行中执行
 ```
 cat /proc/cpuinfo | grep processor | wc -l
 ```
 
-4. HyperBase：配置master.memory内存大小，（若内存大小为8G，那么这里就应该是8G-YARN的                                 yarn.nodemanager.resource.memory-mb内存大小），Mastermemory相当于NN，Region server类似于DN，一般Master memory不耗费内存，主要Region server比较耗费内存
+（4）HyperBase：配置master.memory内存大小，（若内存大小为8G，那么这里就应该是8G-YARN的                                 yarn.nodemanager.resource.memory-mb内存大小），Mastermemory相当于NN，Region server类似于DN，一般Master memory不耗费内存，主要Region server比较耗费内存
 
-5. Inceptor-SQL(SQL on spark)：
+（5）Inceptor-SQL(SQL on spark)：
 高级参数里面可以设置安全护栏，即hive.server.enable，值为FALSE不开启，值为                        TRUE后面服务就需要安装kerberos认证了，这项看具体实际需求。另外在资源分配选项中，executor有                                   Fixed（同构机器，每台机器配置差不多）和Ratio（异构机器，每台机器配置相差很大）两种，一般选择Fixed，下面的内核和内存千万不能超过YARN所设置的内核数和内存大小的值，因为Inceptor-SQL是从YARN那里申请                    资源的！推荐配置为内核数：内存＝1:2（1个内核配置2GB），
 Inceptor server节点和Inceptor metastore节点需要安装在同一节点上，若跨节点对表的操作会延迟会很高，Inceptor metastore存储的是表的信息，
 记住Inceptor metastore节点的IP地址（即Inceptor server地址）因为使用sqoop服务要在metastore节点上操作mysql数据库（操作之前还需添加mysql的驱动）
