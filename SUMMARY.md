@@ -5,7 +5,7 @@
 * [2.第二章 Inceptor-SQL组件](master/chapter1.md)
 * [3.第三章 Sqoop组件](master/chapter2.md)
 * [4.第四章 Flume组件](master/chapter3.md)
-* [JDBC、ODBC工具连接Inceptor](master/chapter4.md)
+* [5.第五章 JDBC、ODBC工具连接Inceptor](master/chapter4.md)
 * [HBase](master/chapter5.md)
 * [Oozie](master/chapter6.md)
 * [Eistic search](master/chapter7.md)
