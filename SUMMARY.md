@@ -7,7 +7,7 @@
 * [第四章 Flume组件](master/chapter3.md)
 * [第五章 JDBC、ODBC工具连接Inceptor](master/chapter4.md)
 * [第六章 HBase组件](master/chapter5.md)
-* [Oozie](master/chapter6.md)
+* [第七章 Oozie组件](master/chapter6.md)
 * [Eistic search](master/chapter7.md)
 * [Kafka](master/chapter8.md)
 * [Spark streaming](master/chapter9.md)
