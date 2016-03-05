@@ -1,7 +1,10 @@
+# 大数据培训手册 #
 
-# 本手册为TDH的安装手册，版权归昆山华信所有，未经公司允许不得外传或泄露
+
+本手册包含介绍了Hadoop大数据平台的相关组件及各组件的使用方法和注意事项
 
 
-============
 
-This manual is TDH installation manual,all rights reserved DHC,without the company's permission may not be leaked
+
+
+
