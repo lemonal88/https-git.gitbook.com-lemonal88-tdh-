@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* [简介](README.md)
 * [Transwarp Manager安装](master/chapter0.md)
 * [Inceptor-SQL](master/chapter1.md)
 * [Sqoop](master/chapter2.md)
@@ -12,5 +12,5 @@
 * [Kafka](master/chapter8.md)
 * [Spark streaming](master/chapter9.md)
 * [MPP](master/chapter10.md)
-* [附录一：POC实施前准备](/master/gettingstartmd.md)
+* [附录一：POC实施前准备](master/gettingstartmd.md)
 
