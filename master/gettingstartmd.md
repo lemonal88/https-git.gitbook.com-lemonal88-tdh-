@@ -110,7 +110,7 @@ CPU:cat /proc/cpuinfo
     
 9、hostname只能是以字母和数字的组合（中间允许‘-’），不能有‘，’ ‘.’ ‘_’等特殊字符
 
-##第二张TDH安装前的检查：
+###TDH安装前的检查：
 
 1、是否配置了RACK？（实施一定要配置，机柜命名一定要以‘/’开头，如/default）
 
@@ -132,7 +132,7 @@ CPU:cat /proc/cpuinfo
 
 10、Inceptor的资源配置是否合理？每个core是否都分配了2.5-2G内存？
 
-##HA和安全配置:是否配置了HA？
+###HA和安全配置:是否配置了HA？
 
 1、KDC HA？
 
@@ -143,6 +143,20 @@ CPU:cat /proc/cpuinfo
 4、Resource Manager HA？
 
 5、Kerberos条件下4.2版本的HDFS有token过期的问题，安装好后是否改对了配置？
+
+
+##第三章 各组件配置和日志路径
+
+配置：
+
+- /etc/[组件名] 1
+
+日志：
+
+- /var/log
+
+
+
 
 
 
