@@ -69,7 +69,8 @@ fsck命令必须由HDFS超级用户来执行，普通用户无权限。
 	20.  
 	21.  
 	22. The filesystem under path '/hivedata/warehouse/liuxiaowen.db/lxw_product_names/part-00168' is HEALTHY
-检查并列出所有文件状态（-files）
+	
+（4）检查并列出所有文件状态（-files）
 
 	1. [hadoop@dev ~]$ hdfs fsck /hivedata/warehouse/liuxiaowen.db/lxw_product_names/ -files
 	2. FSCK started by hadoop (auth:SIMPLE) from /172.16.212.17 for path /hivedata/warehouse/liuxiaowen.db/lxw_product_names/ at Thu Aug 13 09:39:38 CST 2015
@@ -85,7 +86,7 @@ fsck命令必须由HDFS超级用户来执行，普通用户无权限。
 	12. /hivedata/warehouse/liuxiaowen.db/lxw_product_names/part-00007 13486035 bytes, 1 block(s):  OK
 	13. /hivedata/warehouse/liuxiaowen.db/lxw_product_names/part-00008 13481498 bytes, 1 block(s):  OK
 	14. ...
-（4）检查并打印正在被打开执行写操作的文件（-openforwrite）
+（5）检查并打印正在被打开执行写操作的文件（-openforwrite）
 
 	1. [hadoop@dev ~]$ hdfs fsck /hivedata/warehouse/liuxiaowen.db/lxw_product_names/ -openforwrite
 	2. FSCK started by hadoop (auth:SIMPLE) from /172.16.212.17 for path /hivedata/warehouse/liuxiaowen.db/lxw_product_names/ at Thu Aug 13 09:41:28 CST 2015
@@ -110,7 +111,7 @@ fsck命令必须由HDFS超级用户来执行，普通用户无权限。
 	21. FSCK ended at Thu Aug 13 09:41:28 CST 2015 in 10 milliseconds
 	22.  
 	23. The filesystem under path '/hivedata/warehouse/liuxiaowen.db/lxw_product_names/' is HEALTHY
-（5）打印文件的Block报告（-blocks）
+（6）打印文件的Block报告（-blocks）
 需要和-files一起使用。
 
 	1. [hadoop@dev ~]$  hdfs fsck /logs/site/2015-08-08/lxw1234.log -files -blocks
@@ -149,7 +150,7 @@ len=134217728 表示该文件块大小；
 
 repl=2 表示该文件块副本数；
 
-（6）打印文件块的位置信息（-locations）需要和-files -blocks一起使用。
+（7）打印文件块的位置信息（-locations）需要和-files -blocks一起使用。
 
 	1. [hadoop@dev ~]$  hdfs fsck /logs/site/2015-08-08/lxw1234.log -files -blocks -locations
 	2. FSCK started by hadoop (auth:SIMPLE) from /172.16.212.17 for path /logs/site/2015-08-08/lxw1234.log at Thu Aug 13 09:45:59 CST 2015
@@ -167,7 +168,8 @@ repl=2 表示该文件块副本数；
 	14. ...
 
 和打印出的文件块信息相比，多了一个文件块的位置信息：[172.16.212.139:50010, 172.16.212.135:50010]
-（7）打印文件块位置所在的机架信息（-racks）
+
+（8）打印文件块位置所在的机架信息（-racks）
 
 	1. [hadoop@dev ~]$  hdfs fsck /logs/site/2015-08-08/lxw1234.log -files -blocks -locations -racks
 	2. FSCK started by hadoop (auth:SIMPLE) from /172.16.212.17 for path /logs/site/2015-08-08/lxw1234.log at Thu Aug 13 09:45:59 CST 2015
