@@ -70,7 +70,7 @@ CPU:cat /proc/cpuinfo
 - 时间类：**date**
 - IO类：**iostat -mx 3**
 - 权限相关类：**sudo -u、chown、chmod、chgrp**
-- 端口连接类：**netstat －nlap、ping IP、telnet IP端口**
+- 端口连接类：**netstat -nlap、ping IP、telnet IP端口**
 - 查看文件占用：**lsof**
 - 启停服务：**etc/init.d/mysqld [start|stop|restart]**
 - 网页类：**elinks http://192.168.1.210:60010**
