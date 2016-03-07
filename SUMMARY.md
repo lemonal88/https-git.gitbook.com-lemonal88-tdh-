@@ -14,4 +14,5 @@
 * [第十一章 MPP](master/chapter10.md)
 * [附录一：POC实施前准备](master/gettingstartmd.md)
 * [附录二：HDFS fsck命令](master/chapter11.md)
+* HDFS Quotas Guide
 
