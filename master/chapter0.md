@@ -4,24 +4,24 @@
 
 ##安装前准备
 
-A、在/etc/hosts文件中添加主机名，添加在最后一行，如192.168.1.200 dhc-1(注意hostname不支持使用'_','.')，配置完成后可以互相ping下，如果ping不通，请检查/etc/hosts文件和静态IP的设置
+1. 在/etc/hosts文件中添加主机名，添加在最后一行，如192.168.1.200 dhc-1(注意hostname不支持使用'_','.')，配置完成后可以互相ping下，如果ping不通，请检查/etc/hosts文件和静态IP的设置
 
-B、使用chkconfig iptables off关闭防火墙
+2. 使用chkconfig iptables off关闭防火墙
 
-C、在/mnt目录中创建disk1目录（若配有SSD固态硬盘还需创建randisk目录)
+3. 在Manager节点的/mnt目录中创建disk1目录（若配有SSD固态硬盘还需创建randisk目录)
 
-D、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
+4. 设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
 
 
 
 ##安装步骤：
 
-1、进入/mnt/disk1目录
+- 进入/mnt/disk1目录
 
 ![](1.png)
  
  
- 2、使用root用户解压其中的transwarp安装包并安装
+ - 使用root用户解压其中的transwarp安装包并安装
  ```
  >tar -zxvf transwarp-4.2.2-19029-zh.el6.x86_64.tar.gz
  >cd transwarp
@@ -30,7 +30,7 @@ D、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
  ```
 ![](2.png)
  
- 3、安装完成后，会自动弹出界面，依次选择Accept→选择网卡→默认端口8180→删除已有yum资源库→create new repository→Use ISO File→选择/mnt/disk1中的CentOS6.5安装包
+ - 安装完成后，会自动弹出界面，依次选择Accept→选择网卡→默认端口8180→删除已有yum资源库→create new repository→Use ISO File→选择/mnt/disk1中的CentOS6.5安装包
  
  ![](3.png)
  ![](4.png)
@@ -41,23 +41,23 @@ D、设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
  ![](9.png)
  
  
- 4、安装好Centos6.5以后，打开chrome浏览器，输入安装Manager的本地节点ip地址加端口号8180，如192.168.1.200：8180，进行如下步骤操作：
+ - 安装好Centos6.5以后，打开chrome浏览器，输入安装Manager的本地节点ip地址加端口号8180，如192.168.1.200：8180，进行如下步骤操作：
  
-（1）、输入admin、admin进入界面,为了方便多人对Mananger的操作，可以新建多个隶属于admin组的账户，同样可以操作服务器集群，避免了登入登出时被别的用户挤出。
+1. 输入admin、admin进入界面,为了方便多人对Mananger的操作，可以新建多个隶属于admin组的账户，同样可以操作服务器集群，避免了登入登出时被别的用户挤出。
 
-（2）、填写集群名称（随意取名）
+2. 填写集群名称（随意取名）
 
-（3）、添加机柜（使用/rack1，/rack2......）指定
+3. 添加机柜（使用/rack1，/rack2......）指定
 
-（4）、添加节点（可以使用［］来批量添加，如172.16.2.［68-70］）
+4. 添加节点（可以使用［］来批量添加，如172.16.2.［68-70］）
 
-（5）、输入root账号和密码进行确认设定
+5. 输入root账号和密码进行确认设定
 
-（6）、分配机柜，将刚刚的第一个节点分配到/rack1中，其他两个节点分配到/rack2中
+6. 分配机柜，将刚刚的第一个节点分配到/rack1中，其他两个节点分配到/rack2中
 
-（7）、选择需要/etc/hosts来确认网络解析
+7. 选择需要/etc/hosts来确认网络解析
 
-（8）、为了负载均衡，将YARN分配到/rack1中，Inceptor－server分配到/rack2中
+8. 为了负载均衡，将YARN分配到/rack1中，Inceptor－server分配到/rack2中
 
 5、安装组件和服务，按照左侧栏提示分别需要安装Zookeeper、HDFS、YARN、
 Hyperbase、Inceptor－SQL，其他可以暂时不用安装
