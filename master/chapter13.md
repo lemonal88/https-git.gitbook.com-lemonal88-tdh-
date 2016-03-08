@@ -189,43 +189,55 @@ New methods:
 hdfs dfs -getfacl [-R] <path>
 ```
 
-
-
 Displays the Access Control Lists (ACLs) of files and directories. If a directory has a default ACL, then getfacl also displays the default ACL.
 
+```
 hdfs dfs -setfacl [-R] [-b |-k -m |-x <acl_spec> <path>] |[--set <acl_spec> <path>]
+```
 
 Sets Access Control Lists (ACLs) of files and directories.
 
+```
 hdfs dfs -ls <args>
-
+```
 The output of ls will append a ‘+’ character to the permissions string of any file or directory that has an ACL.
 
 See the File System Shell documentation for full coverage of these commands.
 
-Configuration Parameters
+**Configuration Parameters**
 
+```
 dfs.permissions.enabled = true
-
+```
 If yes use the permissions system as described here. If no, permission checking is turned off, but all other behavior is unchanged. Switching from one parameter value to the other does not change the mode, owner or group of files or directories. Regardless of whether permissions are on or off, chmod, chgrp, chown and setfacl always check permissions. These functions are only useful in the permissions context, and so there is no backwards compatibility issue. Furthermore, this allows administrators to reliably set owners and permissions in advance of turning on regular permissions checking.
 
+```
 dfs.web.ugi = webuser,webgroup
+```
 
 The user name to be used by the web server. Setting this to the name of the super-user allows any web client to see everything. Changing this to an otherwise unused identity allows web clients to see only those things visible using “other” permissions. Additional groups may be added to the comma-separated list.
 
+```
 dfs.permissions.superusergroup = supergroup
+```
+
 
 The name of the group of super-users.
 
+```
 fs.permissions.umask-mode = 0022
+```
+
 
 The umask used when creating files and directories. For configuration files, the decimal value 18 may be used.
 
+```
 dfs.cluster.administrators = ACL-for-admins
-
+```
 The administrators for the cluster specified as an ACL. This controls who can access the default servlets, etc. in the HDFS.
 
+```
 dfs.namenode.acls.enabled = true
-
+```
 Set to true to enable support for HDFS ACLs (Access Control Lists). By default, ACLs are disabled. When ACLs are disabled, the NameNode rejects all attempts to set an ACL.
 
