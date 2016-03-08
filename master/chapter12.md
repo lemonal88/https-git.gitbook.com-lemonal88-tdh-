@@ -331,7 +331,6 @@ Examples:
 hadoop fs -getfacl /file
 
 hadoop fs -getfacl -R /dir
-
 ```
 
 
