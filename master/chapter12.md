@@ -421,7 +421,7 @@ Exit Code:
 
 Returns 0 on success and -1 on error.
 
-lsr
+- **lsr**
 
 Usage: hadoop fs -lsr <args>
 
@@ -429,7 +429,7 @@ Recursive version of ls.
 
 Note: This command is deprecated. Instead use hadoop fs -ls -R
 
-mkdir
+- **mkdir**
 
 Usage: hadoop fs -mkdir [-p] <paths>
 
@@ -437,11 +437,18 @@ Takes path uri’s as argument and creates directories.
 
 Options:
 
+```
 The -p option behavior is much like Unix mkdir -p, creating parent directories along the path.
-Example:
+```
 
+Example:
+```
 hadoop fs -mkdir /user/hadoop/dir1 /user/hadoop/dir2
+
 hadoop fs -mkdir hdfs://nn1.example.com/user/hadoop/dir hdfs://nn2.example.com/user/hadoop/dir
+```
+
+
 Exit Code:
 
 Returns 0 on success and -1 on error.
