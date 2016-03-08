@@ -80,52 +80,54 @@ New methods:
 
 The mode of a new file or directory is restricted my the umask set as a configuration parameter. When the existing create(path, …) method (without the permission parameter) is used, the mode of the new file is 0666 & ^umask. When the new create(path, permission, …) method (with the permission parameter P) is used, the mode of the new file is P & ^umask & 0666. When a new directory is created with the existing mkdirs(path) method (without the permission parameter), the mode of the new directory is 0777 & ^umask. When the new mkdirs(path, permission) method (with the permission parameter P) is used, the mode of new directory is P & ^umask & 0777.
 
-Changes to the Application Shell
+**Changes to the Application Shell**
 
 New operations:
 
-chmod [-R] mode file ...
+- chmod [-R] mode file ...
 
 Only the owner of a file or the super-user is permitted to change the mode of a file.
 
-chgrp [-R] group file ...
+- chgrp [-R] group file ...
 
 The user invoking chgrp must belong to the specified group and be the owner of the file, or be the super-user.
 
-chown [-R] [owner][:[group]] file ...
+- chown [-R] [owner][:[group]] file ...
 
 The owner of a file may only be altered by a super-user.
 
-ls file ...
+- ls file ...
 
-lsr file ...
+- lsr file ...
 
 The output is reformatted to display the owner, group and mode.
 
-The Super-User
+**The Super-User**
 
 The super-user is the user with the same identity as name node process itself. Loosely, if you started the name node, then you are the super-user. The super-user can do anything in that permissions checks never fail for the super-user. There is no persistent notion of who was the super-user; when the name node is started the process identity determines who is the super-user for now. The HDFS super-user does not have to be the super-user of the name node host, nor is it necessary that all clusters have the same super-user. Also, an experimenter running HDFS on a personal workstation, conveniently becomes that installation’s super-user without any configuration.
 
 In addition, the administrator my identify a distinguished group using a configuration parameter. If set, members of this group are also super-users.
 
-The Web Server
+**The Web Server**
 
 By default, the identity of the web server is a configuration parameter. That is, the name node has no notion of the identity of the real user, but the web server behaves as if it has the identity (user and groups) of a user chosen by the administrator. Unless the chosen identity matches the super-user, parts of the name space may be inaccessible to the web server.
 
-ACLs (Access Control Lists)
+**ACLs (Access Control Lists)**
 
 In addition to the traditional POSIX permissions model, HDFS also supports POSIX ACLs (Access Control Lists). ACLs are useful for implementing permission requirements that differ from the natural organizational hierarchy of users and groups. An ACL provides a way to set different permissions for specific named users or named groups, not only the file’s owner and the file’s group.
 
 By default, support for ACLs is disabled, and the NameNode disallows creation of ACLs. To enable support for ACLs, set dfs.namenode.acls.enabled to true in the NameNode configuration.
 
 An ACL consists of a set of ACL entries. Each ACL entry names a specific user or group and grants or denies read, write and execute permissions for that specific user or group. For example:
-
+```
    user::rw-
    user:bruce:rwx                  #effective:r--
    group::r-x                      #effective:r--
    group:sales:rwx                 #effective:r--
    mask::r--
    other::r--
+```
+   
 ACL entries consist of a type, an optional name and a permission string. For display purposes, ‘:’ is used as the delimiter between each field. In this example ACL, the file owner has read-write access, the file group has read-execute access and others have read access. So far, this is equivalent to setting the file’s permission bits to 654.
 
 Additionally, there are 2 extended ACL entries for the named user bruce and the named group sales, both granted full access. The mask is a special ACL entry that filters the permissions granted to all named user entries and named group entries, and also the unnamed group entry. In the example, the mask has only read permissions, and we can see that the effective permissions of several ACL entries have been filtered accordingly.
@@ -135,7 +137,7 @@ Every ACL must have a mask. If the user doesn’t supply a mask while setting an
 Running chmod on a file that has an ACL actually changes the permissions of the mask. Since the mask acts as a filter, this effectively constrains the permissions of all extended ACL entries instead of changing just the group entry and possibly missing other extended ACL entries.
 
 The model also differentiates between an “access ACL”, which defines the rules to enforce during permission checks, and a “default ACL”, which defines the ACL entries that new child files or sub-directories receive automatically during creation. For example:
-
+```
    user::rwx
    group::r-x
    other::r-x
@@ -145,6 +147,8 @@ The model also differentiates between an “access ACL”, which defines the rul
    default:group:sales:rwx         #effective:r-x
    default:mask::r-x
    default:other::r-x
+```
+   
 Only directories may have a default ACL. When a new file or sub-directory is created, it automatically copies the default ACL of its parent into its own access ACL. A new sub-directory also copies it to its own default ACL. In this way, the default ACL will be copied down through arbitrarily deep levels of the file system tree as new sub-directories get created.
 
 The exact permission values in the new child’s access ACL are subject to filtering by the mode parameter. Considering the default umask of 022, this is typically 755 for new directories and 644 for new files. The mode parameter filters the copied permission values for the unnamed user (file owner), the mask and other. Using this particular example ACL, and creating a new sub-directory with 755 for the mode, this mode filtering has no effect on the final result. However, if we consider creation of a file with 644 for the mode, then mode filtering causes the new file’s ACL to receive read-write for the unnamed user (file owner), read for the mask and read for others. This mask also means that effective permissions for named user bruce and named group sales are only read.
