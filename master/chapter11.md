@@ -15,15 +15,15 @@ fsck命令必须由HDFS超级用户来执行，普通用户无权限。
 
 	1. [hadoop@dev ~]$ hdfs fsck
 	2. Usage: DFSck  [-list-corruptfileblocks | [-move | -delete | -openforwrite] [-files [-blocks [-locations | -racks]]]]
-	3. start checking from this path
+	3. start  checking from this path
 	4. -move   move corrupted files to /lost+found
-	5. -delete delete corrupted files
-	6. -files  print out files being checked
+	5. -delete  delete corrupted files
+	6. -files   print out files being checked
 	7. -openforwrite   print out files opened for write
-	8. -includeSnapshots       include snapshot data if the given path indicates a snapshottable directory or there are snapshottable directories under it
-	9. -list-corruptfileblocks print out list of missing blocks and files they belong to
-	10. -blocks print out block report
-	11. -locations      print out locations for every block
+	8. -includeSnapshots   include snapshot data if the given path indicates a snapshottable directory or there are snapshottable directories under it
+	9. -list-corruptfileblocks  print out list of missing blocks and files they belong to
+	10. -blocks   print out block report
+	11. -locations   print out locations for every block
 	12. -racks  print out network topology for data-node locations
 下面介绍每一个选项的含义及用法。
 
