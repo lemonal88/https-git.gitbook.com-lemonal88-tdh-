@@ -15,5 +15,5 @@
 * [第十二章 MPP](master/chapter10.md)
 * [附录一：POC实施前准备](master/gettingstartmd.md)
 * [附录二：HDFS Quotas Guide](master/chapter12.md)
-* 附录三：HDFS Permission Guide
+* [附录三：HDFS Permission Guide](master/chapter13.md)
 
