@@ -31,10 +31,13 @@ Quotas are managed by a set of commands available only to the administrator.
 hdfs dfsadmin -setQuota <N> <directory>...<directory>
 ```
 
-
 Set the name quota to be N for each directory. Best effort for each directory, with faults reported if N is not a positive long integer, the directory does not exist or it is a file, or the directory would immediately exceed the new quota.
 
+```
 hdfs dfsadmin -clrQuota <directory>...<directory>
+```
+
+
 
 Remove any name quota for each directory. Best effort for each directory, with faults reported if the directory does not exist or it is a file. It is not a fault if the directory has no quota.
 
