@@ -1,4 +1,4 @@
-# 附录三：HDFS Permission Guide
+# 附录三：HDFS Permission Guide (英文版，后附中文版)
 
 - HDFS Permissions Guide
 
