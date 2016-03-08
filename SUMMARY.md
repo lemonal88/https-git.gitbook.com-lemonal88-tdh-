@@ -6,7 +6,7 @@
 * [第四章 Sqoop](master/chapter2.md)
 * [第五章 Flume](master/chapter3.md)
 * [第六章 JDBC、ODBC工具连接Inceptor](master/chapter4.md)
-* [第六章 HBase](master/chapter5.md)
+* [第七章 HBase](master/chapter5.md)
 * [第七章 Oozie](master/chapter6.md)
 * [第八章 Eistic search](master/chapter7.md)
 * [第九章 Kafka](master/chapter8.md)
