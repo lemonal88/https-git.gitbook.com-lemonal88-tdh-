@@ -1,6 +1,6 @@
 # 附录三：HDFS Quotas Guide
 
-Overview
+###Overview
 
 - **appendToFile**
 - **cat**
@@ -65,46 +65,49 @@ See the Commands Manual for generic shell options.
 Usage: hadoop fs -appendToFile <localsrc> ... <dst>
 
 Append single src, or multiple srcs from local file system to the destination file system. Also reads input from stdin and appends to destination file system.
-
-```hadoop fs -appendToFile localfile /user/hadoop/hadoopfile
+```
+hadoop fs -appendToFile localfile /user/hadoop/hadoopfile
 
 hadoop fs -appendToFile localfile1 localfile2 /user/hadoop/hadoopfile
 
-hadoop fs -appendToFile localfile
-hdfs://nn.example.com/hadoop/hadoopfile
+hadoop fs -appendToFile localfile hdfs://nn.example.com/hadoop/hadoopfile
 
-hadoop fs -appendToFile - hdfs://nn.example.com/hadoop/hadoopfile Reads the input from stdin.```
+hadoop fs -appendToFile - hdfs://nn.example.com/hadoop/hadoopfile Reads the input from stdin.
 
+```
 Exit Code:
 
 Returns 0 on success and 1 on error.
 
-- cat
+- **cat**
 
 Usage: hadoop fs -cat URI [URI ...]
 
 Copies source paths to stdout.
 
 Example:
-
+```
 hadoop fs -cat hdfs://nn1.example.com/file1 hdfs://nn2.example.com/file2
+
 hadoop fs -cat file:///file3 /user/hadoop/file4
+```
 Exit Code:
 
 Returns 0 on success and -1 on error.
 
-checksum
+- **checksum**
 
 Usage: hadoop fs -checksum URI
 
 Returns the checksum information of a file.
 
 Example:
-
+```
 hadoop fs -checksum hdfs://nn1.example.com/file1
+
 hadoop fs -checksum file:///etc/hosts
 chgrp
-
+```
 Usage: hadoop fs -chgrp [-R] GROUP URI [URI ...]
 
 Change group association of files. The user must be the owner of files, or else a super-user. Additional information is in the Permissions Guide.
