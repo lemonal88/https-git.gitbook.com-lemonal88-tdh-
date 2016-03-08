@@ -2,7 +2,7 @@
 
 * [简介](README.md)
 * [第一章 Transwarp Manager安装](master/chapter0.md)
-* [第二章 Inceptor-SQL](master/chapter1.md)
+* [第三章 Inceptor-SQL](master/chapter1.md)
 * [第三章 Sqoop](master/chapter2.md)
 * [第四章 Flume](master/chapter3.md)
 * [第五章 JDBC、ODBC工具连接Inceptor](master/chapter4.md)
