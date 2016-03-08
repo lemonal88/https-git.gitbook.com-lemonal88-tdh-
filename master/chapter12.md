@@ -53,3 +53,7 @@ hadoop fs -count -q [-h] [-v] <directory>...<directory>
 ```
 With the -q option, also report the name quota value set for each directory, the available name quota remaining, the space quota value set, and the available space quota remaining. If the directory does not have a quota set, the reported values are none and inf. The -h option shows sizes in human readable format. The -v option displays a header line.
 
+**原文请参考Apache官方网站：**
+
+[http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsQuotaAdminGuide.html]()
+
