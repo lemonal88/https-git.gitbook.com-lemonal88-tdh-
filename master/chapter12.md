@@ -379,39 +379,44 @@ hadoop fs -getmerge -nl /src /opt/output.txt
 
 hadoop fs -getmerge -nl /src/file1.txt /src/file2.txt /output.txt
 ```
-
-
-
 Exit Code:
 
 Returns 0 on success and non-zero on error.
 
-help
+- **help**
 
 Usage: hadoop fs -help
 
 Return usage output.
 
-ls
+- **ls**
 
 Usage: hadoop fs -ls [-d] [-h] [-R] <args>
 
 Options:
-
--d: Directories are listed as plain files.
--h: Format file sizes in a human-readable fashion (eg 64.0m instead of 67108864).
--R: Recursively list subdirectories encountered.
+```
+- -d: Directories are listed as plain files.
+- -h: Format file sizes in a human-readable fashion (eg 64.0m instead of 67108864).
+- -R: Recursively list subdirectories encountered.
+```
 For a file ls returns stat on the file with the following format:
 
+```
 permissions number_of_replicas userid groupid filesize modification_date modification_time filename
+```
+
 For a directory it returns list of its direct children as in Unix. A directory is listed as:
 
+```
 permissions userid groupid modification_date modification_time dirname
 Files within a directory are order by filename by default.
-
+```
 Example:
 
+```
 hadoop fs -ls /user/hadoop/file1
+```
+
 Exit Code:
 
 Returns 0 on success and -1 on error.
