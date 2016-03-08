@@ -308,13 +308,11 @@ hadoop fs -get /user/hadoop/file localfile
 
 hadoop fs -get hdfs://nn.example.com/user/hadoop/file localfile
 ```
-
-
 Exit Code:
 
 Returns 0 on success and -1 on error.
 
-getfacl
+- **getfacl**
 
 Usage: hadoop fs -getfacl [-R] <path>
 
@@ -322,8 +320,12 @@ Displays the Access Control Lists (ACLs) of files and directories. If a director
 
 Options:
 
+```
 -R: List the ACLs of all files and directories recursively.
+
 path: File or directory to list.
+```
+
 Examples:
 
 hadoop fs -getfacl /file
