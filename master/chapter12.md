@@ -252,13 +252,13 @@ Displays a summary of file lengths.
 
 **Note:** This command is deprecated. Instead use hadoop fs -du -s.
 
-expunge
+- **expunge**
 
 Usage: hadoop fs -expunge
 
 Empty the Trash. Refer to the HDFS Architecture Guide for more information on the Trash feature.
 
-find
+- **find**
 
 Usage: hadoop fs -find <path> ... <expression> ...
 
@@ -266,42 +266,50 @@ Finds all files that match the specified expression and applies selected actions
 
 The following primary expressions are recognised:
 
--name pattern
--iname pattern
+- -name pattern
+ 
+  -iname pattern
 
 Evaluates as true if the basename of the file matches the pattern using standard file system globbing. If -iname is used then the match is case insensitive.
 
--print
--print0Always
+- -print
+ 
+  -print0Always
 
 evaluates to true. Causes the current pathname to be written to standard output. If the -print0 expression is used then an ASCII NULL character is appended.
 
 The following operators are recognised:
 
-expression -a expression
-expression -and expression
-expression expression
+- expression -a expression
+ 
+  expression -and expression
+  
+  expression expression
 
 Logical AND operator for joining two expressions. Returns true if both child expressions return true. Implied by the juxtaposition of two expressions and so does not need to be explicitly specified. The second expression will not be applied if the first fails.
 
 Example:
-
+```
 hadoop fs -find / -name test -print
-
+```
 Exit Code:
 
 Returns 0 on success and -1 on error.
 
-get
+- **get**
 
 Usage: hadoop fs -get [-ignorecrc] [-crc] <src> <localdst>
 
 Copy files to the local file system. Files that fail the CRC check may be copied with the -ignorecrc option. Files and CRCs may be copied using the -crc option.
 
 Example:
-
+```
 hadoop fs -get /user/hadoop/file localfile
+
 hadoop fs -get hdfs://nn.example.com/user/hadoop/file localfile
+```
+
+
 Exit Code:
 
 Returns 0 on success and -1 on error.
