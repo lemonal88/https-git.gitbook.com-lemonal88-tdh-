@@ -1,6 +1,7 @@
 # 附录三：HDFS Quotas Guide
 
-（待续）
+（详文待续）
+
 
 
 
