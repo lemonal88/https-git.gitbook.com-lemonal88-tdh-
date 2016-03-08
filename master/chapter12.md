@@ -642,11 +642,11 @@ The -w flag requests that the command wait for the replication to complete. This
 
 The -R flag is accepted for backwards compatibility. It has no effect.
 ```
-
-
 Example:
-
+```
 hadoop fs -setrep -w 3 /user/hadoop/dir1
+```
+
 Exit Code:
 
 Returns 0 on success and -1 on error.
