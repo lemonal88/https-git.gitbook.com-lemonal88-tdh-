@@ -159,33 +159,37 @@ The default ACL must have all minimum required ACL entries, including the unname
 
 When considering a file that has an ACL, the algorithm for permission checks changes to:
 
-If the user name matches the owner of file, then the owner permissions are tested;
+- If the user name matches the owner of file, then the owner permissions are tested;
 
-Else if the user name matches the name in one of the named user entries, then these permissions are tested, filtered by the mask permissions;
+- Else if the user name matches the name in one of the named user entries, then these permissions are tested, filtered by the mask permissions;
 
-Else if the group of file matches any member of the groups list, and if these permissions filtered by the mask grant access, then these permissions are used;
+- Else if the group of file matches any member of the groups list, and if these permissions filtered by the mask grant access, then these permissions are used;
 
-Else if there is a named group entry matching a member of the groups list, and if these permissions filtered by the mask grant access, then these permissions are used;
+- Else if there is a named group entry matching a member of the groups list, and if these permissions filtered by the mask grant access, then these permissions are used;
 
-Else if the file group or any named group entry matches a member of the groups list, but access was not granted by any of those permissions, then access is denied;
+- Else if the file group or any named group entry matches a member of the groups list, but access was not granted by any of those permissions, then access is denied;
 
-Otherwise the other permissions of file are tested.
+- Otherwise the other permissions of file are tested.
 
 Best practice is to rely on traditional permission bits to implement most permission requirements, and define a smaller number of ACLs to augment the permission bits with a few exceptional rules. A file with an ACL incurs an additional cost in memory in the NameNode compared to a file that has only permission bits.
 
-ACLs File System API
+**ACLs File System API**
 
 New methods:
 
-public void modifyAclEntries(Path path, List<AclEntry> aclSpec) throws IOException;
-public void removeAclEntries(Path path, List<AclEntry> aclSpec) throws IOException;
-public void public void removeDefaultAcl(Path path) throws IOException;
-public void removeAcl(Path path) throws IOException;
-public void setAcl(Path path, List<AclEntry> aclSpec) throws IOException;
-public AclStatus getAclStatus(Path path) throws IOException;
-ACLs Shell Commands
+- public void modifyAclEntries(Path path, List<AclEntry> aclSpec) throws IOException;
+- public void removeAclEntries(Path path, List<AclEntry> aclSpec) throws IOException;
+- public void public void removeDefaultAcl(Path path) throws IOException;
+- public void removeAcl(Path path) throws IOException;
+- public void setAcl(Path path, List<AclEntry> aclSpec) throws IOException;
+- public AclStatus getAclStatus(Path path) throws IOException;
 
+**ACLs Shell Commands**
+```
 hdfs dfs -getfacl [-R] <path>
+```
+
+
 
 Displays the Access Control Lists (ACLs) of files and directories. If a directory has a default ACL, then getfacl also displays the default ACL.
 
