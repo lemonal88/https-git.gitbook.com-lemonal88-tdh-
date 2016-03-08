@@ -313,20 +313,20 @@ public FileStatus getFileStatus(Path f) throws IOException;
 
 新的操作：
 ```
-1.chmod [-R] mode file…
+chmod [-R] mode file…
 ```
 只有文件所有者和超级用户被允许改变文件的访问模式。
 ```
-2.chgrp [-R] group file…
+chgrp [-R] group file…
 ```
 只有属于指定的用户组和文件的所有者或者超级用户可以调用此命令。
 ```
-3.chown [-R][owner][:[group]] file …
+chown [-R][owner][:[group]] file …
 ```
 一个文件的拥有者只有超级用户可以更改。
 ```
-4.ls file …
-5.lsr file …
+ls file …
+lsr file …
 ```
 输出被重新格式化后显示文件所有者，用户组和访问模式。
 
@@ -422,16 +422,16 @@ public AclStatus getAclStatus(Path path) throws IOException;
 **ACLs Shell Commands**
 
 ```
-1.hdfs dfs -getfacl[-R] <path>
+hdfs dfs -getfacl[-R] <path>
 ```
 显示一个文件和目录的ACLs。如果一个目录有一个defaultACL，getfacl也会显示默认的ACL。
 
 ```
-2.hdfs dfs -setfacl [-R][-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec><path>]
+hdfs dfs -setfacl [-R][-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec><path>]
 ```
 设置文件和目录的ACLs。
 ```
-3.hdfs dfs -ls<args>
+hdfs dfs -ls<args>
 ```
 ls的输出将会附加“+”号到任何一个有ACL的权限字符串。
 
