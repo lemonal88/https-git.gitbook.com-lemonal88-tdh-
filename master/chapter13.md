@@ -1,4 +1,4 @@
-# 附录三：HDFS Permission Guide（U.S version） 
+# 附录三：HDFS Permission Guide（English version） 
 ####(注：后附中文版，强烈建议先看英文文档)
 
 - HDFS Permissions Guide
