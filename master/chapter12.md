@@ -453,62 +453,78 @@ Exit Code:
 
 Returns 0 on success and -1 on error.
 
-moveFromLocal
+- **moveFromLocal**
 
 Usage: hadoop fs -moveFromLocal <localsrc> <dst>
 
 Similar to put command, except that the source localsrc is deleted after it’s copied.
 
-moveToLocal
+- **moveToLocal**
 
 Usage: hadoop fs -moveToLocal [-crc] <src> <dst>
 
 Displays a “Not implemented yet” message.
 
-mv
+- **mv**
 
 Usage: hadoop fs -mv URI [URI ...] <dest>
 
 Moves files from source to destination. This command allows multiple sources as well in which case the destination needs to be a directory. Moving files across file systems is not permitted.
 
 Example:
-
+```
 hadoop fs -mv /user/hadoop/file1 /user/hadoop/file2
+
 hadoop fs -mv hdfs://nn.example.com/file1 hdfs://nn.example.com/file2 hdfs://nn.example.com/file3 hdfs://nn.example.com/dir1
+```
+
 Exit Code:
 
 Returns 0 on success and -1 on error.
 
-put
+- **put**
 
 Usage: hadoop fs -put <localsrc> ... <dst>
 
 Copy single src, or multiple srcs from local file system to the destination file system. Also reads input from stdin and writes to destination file system.
 
+```
 hadoop fs -put localfile /user/hadoop/hadoopfile
+
 hadoop fs -put localfile1 localfile2 /user/hadoop/hadoopdir
+
 hadoop fs -put localfile hdfs://nn.example.com/hadoop/hadoopfile
+
 hadoop fs -put - hdfs://nn.example.com/hadoop/hadoopfile Reads the input from stdin.
+```
+
 Exit Code:
 
 Returns 0 on success and -1 on error.
 
-renameSnapshot
+- **renameSnapshot**
 
 See HDFS Snapshots Guide.
 
-rm
+- **rm**
 
 Usage: hadoop fs -rm [-f] [-r |-R] [-skipTrash] URI [URI ...]
 
 Delete files specified as args.
 
 Options:
-
+```
 The -f option will not display a diagnostic message or modify the exit status to reflect an error if the file does not exist.
+
 The -R option deletes the directory and any content under it recursively.
+
 The -r option is equivalent to -R.
+
 The -skipTrash option will bypass trash, if enabled, and delete the specified file(s) immediately. This can be useful when it is necessary to delete files from an over-quota directory.
+```
+
+
+
 Example:
 
 hadoop fs -rm hdfs://nn.example.com/file /user/hadoop/emptydir
