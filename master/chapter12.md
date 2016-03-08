@@ -333,42 +333,55 @@ hadoop fs -getfacl /file
 hadoop fs -getfacl -R /dir
 ```
 
-
 Exit Code:
 
 Returns 0 on success and non-zero on error.
 
-getfattr
+- **getfattr**
 
 Usage: hadoop fs -getfattr [-R] -n name | -d [-e en] <path>
 
 Displays the extended attribute names and values (if any) for a file or directory.
 
 Options:
+```
+- -R: Recursively list the attributes for all files and directories.
 
--R: Recursively list the attributes for all files and directories.
--n name: Dump the named extended attribute value.
--d: Dump all extended attribute values associated with pathname.
--e encoding: Encode values after retrieving them. Valid encodings are “text”, “hex”, and “base64”. Values encoded as text strings are enclosed in double quotes ("), and values encoded as hexadecimal and base64 are prefixed with 0x and 0s, respectively.
-path: The file or directory.
+- -n name: Dump the named extended attribute value.
+
+- -d: Dump all extended attribute values associated with pathname.
+
+- -e encoding: Encode values after retrieving them. Valid encodings are “text”, “hex”, and “base64”. Values encoded as text strings are enclosed in double quotes ("), and values encoded as hexadecimal and base64 are prefixed with 0x and 0s, respectively.
+
+- path: The file or directory.
+```
 Examples:
 
+```
 hadoop fs -getfattr -d /file
+
 hadoop fs -getfattr -R -n user.myAttr /dir
+```
+
 Exit Code:
 
 Returns 0 on success and non-zero on error.
 
-getmerge
+- getmerge
 
 Usage: hadoop fs -getmerge [-nl] <src> <localdst>
 
 Takes a source directory and a destination file as input and concatenates files in src into the destination local file. Optionally -nl can be set to enable adding a newline character (LF) at the end of each file.
 
 Examples:
-
+```
 hadoop fs -getmerge -nl /src /opt/output.txt
+
 hadoop fs -getmerge -nl /src/file1.txt /src/file2.txt /output.txt
+```
+
+
+
 Exit Code:
 
 Returns 0 on success and non-zero on error.
