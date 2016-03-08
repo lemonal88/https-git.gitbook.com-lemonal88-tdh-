@@ -651,42 +651,55 @@ Exit Code:
 
 Returns 0 on success and -1 on error.
 
-stat
+- stat
 
 Usage: hadoop fs -stat [format] <path> ...
 
 Print statistics about the file/directory at <path> in the specified format. Format accepts filesize in blocks (%b), type (%F), group name of owner (%g), name (%n), block size (%o), replication (%r), user name of owner(%u), and modification date (%y, %Y). %y shows UTC date as “yyyy-MM-dd HH:mm:ss” and %Y shows milliseconds since January 1, 1970 UTC. If the format is not specified, %y is used by default.
 
 Example:
-
+```
 hadoop fs -stat "%F %u:%g %b %y %n" /file
+```
+
 Exit Code: Returns 0 on success and -1 on error.
 
-tail
+- tail
 
 Usage: hadoop fs -tail [-f] URI
 
 Displays last kilobyte of the file to stdout.
 
 Options:
-
+```
 The -f option will output appended data as the file grows, as in Unix.
-Example:
+```
 
+Example:
+```
 hadoop fs -tail pathname
+```
+
 Exit Code: Returns 0 on success and -1 on error.
 
-test
+- test
 
 Usage: hadoop fs -test -[defsz] URI
 
 Options:
-
+```
 -d: f the path is a directory, return 0.
+
 -e: if the path exists, return 0.
+
 -f: if the path is a file, return 0.
+
 -s: if the path is not empty, return 0.
+
 -z: if the file is zero length, return 0.
+```
+
+
 Example:
 
 hadoop fs -test -e filename
