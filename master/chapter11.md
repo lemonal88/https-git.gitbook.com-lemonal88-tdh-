@@ -73,7 +73,6 @@ hadoop fs -appendToFile localfile1 localfile2 /user/hadoop/hadoopfile
 hadoop fs -appendToFile localfile hdfs://nn.example.com/hadoop/hadoopfile
 
 hadoop fs -appendToFile - hdfs://nn.example.com/hadoop/hadoopfile Reads the input from stdin.
-
 ```
 Exit Code:
 
