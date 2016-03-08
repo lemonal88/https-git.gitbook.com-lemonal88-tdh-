@@ -203,48 +203,54 @@ Exit Code:
 
 Returns 0 on success and -1 on error.
 
-createSnapshot
+- **createSnapshot**
 
 See HDFS Snapshots Guide.
 
-deleteSnapshot
+- **deleteSnapshot**
 
 See HDFS Snapshots Guide.
 
-df
+- **df**
 
 Usage: hadoop fs -df [-h] URI [URI ...]
 
 Displays free space.
 
 Options:
-
+```
 The -h option will format file sizes in a “human-readable” fashion (e.g 64.0m instead of 67108864)
+```
 Example:
-
+```
 hadoop dfs -df /user/hadoop/dir1
-du
+```
+
+- **du**
 
 Usage: hadoop fs -du [-s] [-h] URI [URI ...]
 
 Displays sizes of files and directories contained in the given directory or the length of a file in case its just a file.
 
 Options:
-
+```
 The -s option will result in an aggregate summary of file lengths being displayed, rather than the individual files.
-The -h option will format file sizes in a “human-readable” fashion (e.g 64.0m instead of 67108864)
-Example:
 
+The -h option will format file sizes in a “human-readable” fashion (e.g 64.0m instead of 67108864)
+```
+Example:
+```
 hadoop fs -du /user/hadoop/dir1 /user/hadoop/file1 hdfs://nn.example.com/user/hadoop/dir1
+```
 Exit Code: Returns 0 on success and -1 on error.
 
-dus
+- **dus**
 
 Usage: hadoop fs -dus <args>
 
 Displays a summary of file lengths.
 
-Note: This command is deprecated. Instead use hadoop fs -du -s.
+**Note:** This command is deprecated. Instead use hadoop fs -du -s.
 
 expunge
 
