@@ -527,12 +527,11 @@ Example:
 hadoop fs -rm hdfs://nn.example.com/file /user/hadoop/emptydir
 ```
 
-
 Exit Code:
 
 Returns 0 on success and -1 on error.
 
-rmdir
+- **rmdir**
 
 Usage: hadoop fs -rmdir [--ignore-fail-on-non-empty] URI [URI ...]
 
@@ -540,7 +539,7 @@ Delete a directory.
 
 Options:
 
---ignore-fail-on-non-empty: When using wildcards, do not fail if a directory still contains files.
+- --ignore-fail-on-non-empty: When using wildcards, do not fail if a directory still contains files.
 Example:
 
 hadoop fs -rmdir /user/hadoop/emptydir
