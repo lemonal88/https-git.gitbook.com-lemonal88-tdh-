@@ -392,15 +392,22 @@ Default ACl必须有所有ACL条目的最小需求，包括未命名的用户（
 最佳实践是依靠传统permission bits来实现大多数权限需求，然后定义少量的ACLs来给permission bits增加额外的规则。相比于只有权限位的文件，一个有ACL的文件导致NameNode中额外的内存消耗。
 
 **ACLs File System API**
+
 新的方法：
 
+```
 public void modifyAclEntries(Path path, List<AclEntry> aclSpec) throws IOException;
-public void removeAclEntries(Path path, List<AclEntry> aclSpec) throws IOException;
-public void public void removeDefaultAcl(Path path) throws IOException;
-public void removeAcl(Path path) throws IOException;
-public void setAcl(Path path, List<AclEntry> aclSpec) throws IOException;
-public AclStatus getAclStatus(Path path) throws IOException;
 
+public void removeAclEntries(Path path, List<AclEntry> aclSpec) throws IOException;
+
+public void public void removeDefaultAcl(Path path) throws IOException;
+
+public void removeAcl(Path path) throws IOException;
+
+public void setAcl(Path path, List<AclEntry> aclSpec) throws IOException;
+
+public AclStatus getAclStatus(Path path) throws IOException;
+```
 **ACLs Shell Commands**
 
 1.hdfs dfs -getfacl[-R] <path>
@@ -418,6 +425,7 @@ ls的输出将会附加“+”号到任何一个有ACL的权限字符串。
 看File System Shell 文档查看这些命令的所有用法。
 
 **Configuration Parameters**
+
 1.dfs.permissions.enabled= true
 
 如果你像上边描述的一样使用权限系统。如果不是，权限检查被关闭，但是所有其他的表现都是不变的。从一个参数值切换到另一个，不会改变文件和目录的访问模式，所有者和用户组。不管权限是否关闭，chmod，chgrp和chown总是检查权限。这些功能只在有权限的环境中有用，所以没有向后兼容的问题。而且，这允许管理员在打开常规的权限检查之前可靠的设置所有者和权限。
