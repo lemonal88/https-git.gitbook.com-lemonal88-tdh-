@@ -37,11 +37,12 @@ Set the name quota to be N for each directory. Best effort for each directory, w
 hdfs dfsadmin -clrQuota <directory>...<directory>
 ```
 
-
-
 Remove any name quota for each directory. Best effort for each directory, with faults reported if the directory does not exist or it is a file. It is not a fault if the directory has no quota.
 
+```
 hdfs dfsadmin -setSpaceQuota <N> <directory>...<directory>
+```
+
 
 Set the space quota to be N bytes for each directory. This is a hard limit on total size of all the files under the directory tree. The space quota takes replication also into account, i.e. one GB of data with replication of 3 consumes 3GB of quota. N can also be specified with a binary prefix for convenience, for e.g. 50g for 50 gigabytes and 2t for 2 terabytes etc. Best effort for each directory, with faults reported if N is neither zero nor a positive integer, the directory does not exist or it is a file, or the directory would immediately exceed the new quota.
 
