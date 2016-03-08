@@ -1,7 +1,7 @@
 
 # 附录二： HDFS Quotas Guide（English version）
 
-####(注：后附中文版，强烈建议先看英文文档)
+####(注：后附中文版，建议先看英文文档)
 
 - HDFS Quotas Guide
   - Name Quotas
