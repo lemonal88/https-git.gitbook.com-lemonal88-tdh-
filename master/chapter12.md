@@ -115,7 +115,8 @@ Change group association of files. The user must be the owner of files, or else 
 Options
 
 The -R option will make the change recursively through the directory structure.
-chmod
+
+- **chmod**
 
 Usage: hadoop fs -chmod [-R] <MODE[,MODE]... | OCTALMODE> URI [URI ...]
 
