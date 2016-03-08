@@ -1,4 +1,4 @@
-# 附录二：HDFS fsck命令
+# 2. 2 HDFS fsck命令
 
 在HDFS中，提供了fsck命令，用于**检查HDFS上文件和目录的健康状态、获取文件的block信息和位置信息**等。
 fsck命令必须由HDFS超级用户来执行，普通用户无权限。
