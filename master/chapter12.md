@@ -522,12 +522,12 @@ The -r option is equivalent to -R.
 
 The -skipTrash option will bypass trash, if enabled, and delete the specified file(s) immediately. This can be useful when it is necessary to delete files from an over-quota directory.
 ```
-
-
-
 Example:
-
+```
 hadoop fs -rm hdfs://nn.example.com/file /user/hadoop/emptydir
+```
+
+
 Exit Code:
 
 Returns 0 on success and -1 on error.
