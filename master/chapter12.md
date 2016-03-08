@@ -538,71 +538,98 @@ Usage: hadoop fs -rmdir [--ignore-fail-on-non-empty] URI [URI ...]
 Delete a directory.
 
 Options:
-
-- --ignore-fail-on-non-empty: When using wildcards, do not fail if a directory still contains files.
+- --ignore-fail-on-non-empty: When using     wildcards, do not fail if a directory still contains files.
 Example:
-
+```
 hadoop fs -rmdir /user/hadoop/emptydir
-rmr
+```
 
+- **rmr**
+ 
 Usage: hadoop fs -rmr [-skipTrash] URI [URI ...]
 
 Recursive version of delete.
 
 Note: This command is deprecated. Instead use hadoop fs -rm -r
 
-setfacl
+- **setfacl**
 
 Usage: hadoop fs -setfacl [-R] [-b |-k -m |-x <acl_spec> <path>] |[--set <acl_spec> <path>]
 
 Sets Access Control Lists (ACLs) of files and directories.
 
 Options:
-
+```
 -b: Remove all but the base ACL entries. The entries for user, group and others are retained for compatibility with permission bits.
--k: Remove the default ACL.
--R: Apply operations to all files and directories recursively.
--m: Modify ACL. New entries are added to the ACL, and existing entries are retained.
--x: Remove specified ACL entries. Other ACL entries are retained.
---set: Fully replace the ACL, discarding all existing entries. The acl_spec must include entries for user, group, and others for compatibility with permission bits.
-acl_spec: Comma separated list of ACL entries.
-path: File or directory to modify.
-Examples:
 
+-k: Remove the default ACL.
+
+-R: Apply operations to all files and directories recursively.
+
+-m: Modify ACL. New entries are added to the ACL, and existing entries are retained.
+
+-x: Remove specified ACL entries. Other ACL entries are retained.
+
+--set: Fully replace the ACL, discarding all existing entries. The acl_spec must include entries for user, group, and others for compatibility with permission bits.
+
+acl_spec: Comma separated list of ACL entries.
+
+path: File or directory to modify.
+```
+Examples:
+```
 hadoop fs -setfacl -m user:hadoop:rw- /file
+
 hadoop fs -setfacl -x user:hadoop /file
+
 hadoop fs -setfacl -b /file
+
 hadoop fs -setfacl -k /dir
-hadoop fs -setfacl --set user::rw-,user:hadoop:rw-,group::r--,other::r-- /file
+
+hadoop fs -setfacl --set
+user::rw-,user:hadoop:rw-,group::r--,other::r-- /file
+
 hadoop fs -setfacl -R -m user:hadoop:r-x /dir
+
 hadoop fs -setfacl -m default:user:hadoop:r-x /dir
+```
+
 Exit Code:
 
 Returns 0 on success and non-zero on error.
 
-setfattr
+- **setfattr**
 
 Usage: hadoop fs -setfattr -n name [-v value] | -x name <path>
 
 Sets an extended attribute name and value for a file or directory.
 
 Options:
-
+```
 -b: Remove all but the base ACL entries. The entries for user, group and others are retained for compatibility with permission bits.
--n name: The extended attribute name.
--v value: The extended attribute value. There are three different encoding methods for the value. If the argument is enclosed in double quotes, then the value is the string inside the quotes. If the argument is prefixed with 0x or 0X, then it is taken as a hexadecimal number. If the argument begins with 0s or 0S, then it is taken as a base64 encoding.
--x name: Remove the extended attribute.
-path: The file or directory.
-Examples:
 
+-n name: The extended attribute name.
+
+-v value: The extended attribute value. There are three different encoding methods for the value. If the argument is enclosed in double quotes, then the value is the string inside the quotes. If the argument is prefixed with 0x or 0X, then it is taken as a hexadecimal number. If the argument begins with 0s or 0S, then it is taken as a base64 encoding.
+
+-x name: Remove the extended attribute.
+
+path: The file or directory.
+```
+Examples:
+```
 hadoop fs -setfattr -n user.myAttr -v myValue /file
+
 hadoop fs -setfattr -n user.noValue /file
+
 hadoop fs -setfattr -x user.myAttr /file
+```
+
 Exit Code:
 
 Returns 0 on success and non-zero on error.
 
-setrep
+- setrep
 
 Usage: hadoop fs -setrep [-R] [-w] <numReplicas> <path>
 
@@ -610,8 +637,13 @@ Changes the replication factor of a file. If path is a directory then the comman
 
 Options:
 
+```
 The -w flag requests that the command wait for the replication to complete. This can potentially take a very long time.
+
 The -R flag is accepted for backwards compatibility. It has no effect.
+```
+
+
 Example:
 
 hadoop fs -setrep -w 3 /user/hadoop/dir1
