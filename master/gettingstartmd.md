@@ -1,7 +1,7 @@
 # 附录一：POC实施前准备
 
 
-##第一章 OS & Linux
+##一、 OS & Linux
 
 1、检查操作系统及其版本
 
@@ -76,8 +76,8 @@ CPU:cat /proc/cpuinfo
 - 网页类：**elinks http://192.168.1.210:60010**
 - 挂载：**mount、unmount**
 
-第二章 安装TDH的Checklist
-=======
+##二、 安装TDH的Checklist
+
 ####环境检查：
 
 1、操作系统版本CentOS6.3-6.5/REHL6.3-6.5/SureSP2-SP3/操作系统是否干净？
@@ -145,7 +145,7 @@ CPU:cat /proc/cpuinfo
 5、Kerberos条件下4.2版本的HDFS有token过期的问题，安装好后是否改对了配置？
 
 
-##第三章 各组件配置和日志路径
+##三、各组件配置和日志路径
 
 配置：
 
