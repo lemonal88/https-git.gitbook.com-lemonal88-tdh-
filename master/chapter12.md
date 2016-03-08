@@ -94,5 +94,13 @@ dfsadmin -setSpaceQuota <N> <directory>...<directory>
 ```
 dfsadmin -clrSpaceQuota <directory>...<director>
 ```
-
 为每一个文件夹删除空间配额
+
+**报告命令**
+
+HDFS的shell可以使用count命令去查询配额的值和当前的name和字节被用了。
+
+```
+fs -count -q <directory>...<directory>
+```
+使用-q选项，可以报告文件夹的命名配额，剩余命名配额，空间配额，可用空间配额。如果文件夹没有设置配额，那么会报告值为none和inf
