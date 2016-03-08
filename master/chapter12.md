@@ -327,9 +327,14 @@ path: File or directory to list.
 ```
 
 Examples:
-
+```
 hadoop fs -getfacl /file
+
 hadoop fs -getfacl -R /dir
+
+```
+
+
 Exit Code:
 
 Returns 0 on success and non-zero on error.
