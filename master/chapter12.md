@@ -85,7 +85,6 @@ dfsadmin -setQuota <N> <directory>...<directory>
 ```
 dfsadmin -clrQuota <directory>...<directory>
 ```
-
 删除命名配额。如果文件夹不存在或者是一个文件会报错。
 ```
 dfsadmin -setSpaceQuota <N> <directory>...<directory>
@@ -99,7 +98,6 @@ dfsadmin -clrSpaceQuota <directory>...<director>
 **报告命令**
 
 HDFS的shell可以使用count命令去查询配额的值和当前的name和字节被用了。
-
 ```
 fs -count -q <directory>...<directory>
 ```
