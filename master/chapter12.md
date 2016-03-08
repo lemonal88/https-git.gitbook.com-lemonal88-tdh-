@@ -63,7 +63,7 @@ With the -q option, also report the name quota value set for each directory, the
 #HDFS Quotas Guide（中文版）
 **概述**
 
-HDFS允许管理员为使用的命名和每个文件夹设置配额。命名配额和空间配额独立操作，但是这两种陪管理和实现是连接紧密的。
+HDFS允许管理员为使用的命名和每个文件夹设置配额。命名配额和空间配额独立操作，但是这两种配额管理和实现是连接紧密的。
 
 **命名配额**
 
