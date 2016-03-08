@@ -106,8 +106,9 @@ Example:
 hadoop fs -checksum hdfs://nn1.example.com/file1
 
 hadoop fs -checksum file:///etc/hosts
-chgrp
 ```
+- **chgrp**
+ 
 Usage: hadoop fs -chgrp [-R] GROUP URI [URI ...]
 
 Change group association of files. The user must be the owner of files, or else a super-user. Additional information is in the Permissions Guide.
@@ -125,7 +126,8 @@ Change the permissions of files. With -R, make the change recursively through th
 Options
 
 The -R option will make the change recursively through the directory structure.
-chown
+
+- **chown**
 
 Usage: hadoop fs -chown [-R] [OWNER][:[GROUP]] URI [URI ]
 
@@ -134,7 +136,8 @@ Change the owner of files. The user must be a super-user. Additional information
 Options
 
 The -R option will make the change recursively through the directory structure.
-copyFromLocal
+
+- **copyFromLocal**
 
 Usage: hadoop fs -copyFromLocal <localsrc> URI
 
@@ -149,7 +152,7 @@ Usage: hadoop fs -copyToLocal [-ignorecrc] [-crc] URI <localdst>
 
 Similar to get command, except that the destination is restricted to a local file reference.
 
-count
+- **count**
 
 Usage: hadoop fs -count [-q] [-h] [-v] <paths>
 
@@ -162,16 +165,20 @@ The -h option shows sizes in human readable format.
 The -v option displays a header line.
 
 Example:
-
+```
 hadoop fs -count hdfs://nn1.example.com/file1 hdfs://nn2.example.com/file2
+
 hadoop fs -count -q hdfs://nn1.example.com/file1
+
 hadoop fs -count -q -h hdfs://nn1.example.com/file1
+
 hdfs dfs -count -q -h -v hdfs://nn1.example.com/file1
+```
 Exit Code:
 
 Returns 0 on success and -1 on error.
 
-cp
+- **cp**
 
 Usage: hadoop fs -cp [-f] [-p | -p[topax]] URI [URI ...] <dest>
 
@@ -180,13 +187,18 @@ Copy files from source to destination. This command allows multiple sources as w
 ‘raw.*’ namespace extended attributes are preserved if (1) the source and destination filesystems support them (HDFS only), and (2) all source and destination pathnames are in the /.reserved/raw hierarchy. Determination of whether raw.* namespace xattrs are preserved is independent of the -p (preserve) flag.
 
 Options:
-
+```
 The -f option will overwrite the destination if it already exists.
-The -p option will preserve file attributes [topx] (timestamps, ownership, permission, ACL, XAttr). If -p is specified with no arg, then preserves timestamps, ownership, permission. If -pa is specified, then preserves permission also because ACL is a super-set of permission. Determination of whether raw namespace extended attributes are preserved is independent of the -p flag.
-Example:
 
+The -p option will preserve file attributes [topx] (timestamps, ownership, permission, ACL, XAttr). If -p is specified with no arg, then preserves timestamps, ownership, permission. If -pa is specified, then preserves permission also because ACL is a super-set of permission. Determination of whether raw namespace extended attributes are preserved is independent of the -p flag.
+```
+
+Example:
+```
 hadoop fs -cp /user/hadoop/file1 /user/hadoop/file2
+
 hadoop fs -cp /user/hadoop/file1 /user/hadoop/file2 /user/hadoop/dir
+```
 Exit Code:
 
 Returns 0 on success and -1 on error.
