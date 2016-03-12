@@ -48,7 +48,7 @@ sqoop import \
 --target-dir /user/user1/data/sqoop -m 4
 ```
 
-9. 从HDFS————>mysql表上（export）
+9. 从HDFS————>mysql表上（export，cc表一定要和HDFS上的数据字段一致）
 ```
 sqoop export \
 --username tdh \
@@ -56,7 +56,6 @@ sqoop export \
 --connect jdbc:mysql://<mysql IP>:3306/db1 \
 --table cc \
 --export-dir /user/testdir \
---staging-table tmptable
 ```
 
 10. 查看sqoop导入进来的文件
