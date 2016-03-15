@@ -4,15 +4,75 @@
 
 ##安装前准备
 
-1. **在/etc/hosts文件中添加主机名，添加在最后一行，如192.168.1.200 dhc-1(注意hostname不支持使用'_','.')，配置完成后可以互相ping下，如果ping不通，请检查/etc/hosts文件和静态IP的设置**
+*  修改/etc/hosts文件内容
 
-2. **使用chkconfig iptables off关闭防火墙**
-
-3. **在/mnt目录中创建disk1目录（若配有SSD固态硬盘还需创建randisk目录)**
-
-4. **设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')**
+&nbsp;&nbsp;&nbsp;&nbsp;在/etc/hosts文件中添加主机名，添加在最后一行，如192.168.1.200 dhc-1(注意hostname不支持使用'_','.')，配置完成后可以互相ping下，如果ping不通，请检查/etc/hosts文件和静态IP的设置
 
 
+
+* 关闭防火墙
+
+&nbsp;&nbsp;&nbsp;&nbsp;使用chkconfig iptables off关闭防火墙
+
+* 安装目录的创建-非必选
+
+&nbsp;&nbsp;&nbsp;&nbsp;在/mnt目录中创建disk1目录（若配有SSD固态硬盘还需创建randisk目录)
+
+* 时间设定-非必选
+
+&nbsp;&nbsp;&nbsp;&nbsp;设置系统时间为NTP网络时间(如date -s '2016-1-19 9:00:00')
+
+* /etc/sysconfig/network文件修改
+
+```
+NETWORKING=yes
+HOSTNAME=dhc-1
+```
+
+
+
+* ip地址修改
+
+```
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+
+#描述网卡对应的设备别名，例如ifcfg-eth0的文件中它为eth0
+DEVICE=eth0
+#设置网卡获得ip地址的方式，可能的选项为static，dhcp或bootp
+BOOTPROTO=static 　
+BROADCAST=192.168.0.255 #对应的子网广播地址
+HWADDR=00:07:E9:05:E8:B4 #对应的网卡物理地址
+#如果设置网卡获得 ip地址的方式为静态指定，此字段就指定了网卡对应的ip地址
+IPADDR=12.168.0.33 　
+NETMASK=255.255.255.0 #网卡对应的网络掩码
+NETWORK=192.168.0.0 #网卡对应的网络地址
+```
+* 网关地址修改
+
+```
+vi /etc/sysconfig/network
+
+#表示系统是否使用网络，一般设置为yes。如果设为no，
+#则不能使用网络，而且很多系统服务程序将无法启动
+NETWORKING=yes
+#设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应
+HOSTNAME=centos　
+#设置本机连接的网关的IP地址
+GATEWAY=192.168.0.1
+```
+
+* DNS修改
+
+```
+vi /etc/resolv.conf
+
+```
+* 网络服务重启
+
+```
+service network restart 
+
+```
 
 ##安装步骤：
 
