@@ -118,7 +118,7 @@ CPU:cat /proc/cpuinfo
 
 3、HDFS的一个目录配置是否只包含/mnt/disk*的数据盘，SSD是否排除在外？
 
-4、Hmaster个数是否为奇数？（3个或5个）
+4、HMaster个数是否为奇数？（3个或5个）
 
 5、YARN的2个目录配置是否只包含/mnt/disk*的数据盘，SSD是否排除在外？
 
